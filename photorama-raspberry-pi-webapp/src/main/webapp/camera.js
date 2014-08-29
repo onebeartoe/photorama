@@ -1,9 +1,7 @@
 
-
-
 function timeLapseChanged(state)
 {
-    alert('hi');
+//    alert('hi');
     
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange=function()
@@ -17,13 +15,11 @@ function timeLapseChanged(state)
     var url = "time-lapse/" + state;
     xmlhttp.open("POST", url, true);
     xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-    xmlhttp.send("message=hi&lname=Ford");
+    xmlhttp.send("p1=a&p2=b");
 }
 
-function timeLapseChanged_ORIGINAL(state)
+function timeLapseFrequencyChanged(frequency)
 {
-    alert('hi');
-    
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange=function()
     {
@@ -33,15 +29,15 @@ function timeLapseChanged_ORIGINAL(state)
             document.getElementById("logs").innerHTML = s;
         }
     }
-    var url = "time-lapse/" + state;
+    var url = "frequency/" + frequency;
     xmlhttp.open("POST", url, true);
     xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-    xmlhttp.send("message=hi&lname=Ford");
+    xmlhttp.send("p1=a&p2=b");
 }
 
 function timeLapseFrequencyUnitChanged(unit)
 {
-    alert('hiOI');
+//    alert('hiOI');
     
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange=function()
@@ -55,5 +51,5 @@ function timeLapseFrequencyUnitChanged(unit)
     var url = "frequency/unit/" + unit;
     xmlhttp.open("POST", url, true);
     xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-    xmlhttp.send("message=hi&lname=Ford");
+    xmlhttp.send("p1=a&p2=b");
 }

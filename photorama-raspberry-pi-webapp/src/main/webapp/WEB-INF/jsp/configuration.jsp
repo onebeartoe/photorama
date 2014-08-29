@@ -8,17 +8,18 @@
                 <div style="margin-left: auto; margin-right: auto; width: 50%;">
                     Frequency: 
                     <select name="fequency" onchange="timeLapseFrequencyChanged(this.value);"
-                        <c:forEach var="x" begin="1" end="60">
+                        <c:forEach var="x" begin="0" end="60">
                             <option value="<c:out value="${x}"></c:out>">${x}</option>                        
                         </c:forEach>
                     </select>
 
                     &nbsp;
 
-                    <select name="fequencyUnit" onchange="timeLapseFrequencyUnitChanged(this.value);"
-                            <option value="minutes">Minutes</option>
+                    <select name="fequencyUnit" onchange="timeLapseFrequencyUnitChanged(this.value);">
                             <option value="seconds">Seconds</option>
+                            <option value="minutes">Minutes</option>                            
                             <option value="hours">Hours</option>
+                            <option value="seconds">Days</option>
                     </select>
 
                     <br/>
@@ -26,8 +27,8 @@
 
                     Time Lapse:
                     <select name="timeLapse" onchange="timeLapseChanged(this.value);" >
-                        <option value="on" >On</option>
                         <option value="off">Off</option>
+                        <option value="on" >On</option>
                     </select>                
                 </div>
 	    </div>
@@ -52,4 +53,3 @@
                 </center>
 	    </div>
 	</div>
-

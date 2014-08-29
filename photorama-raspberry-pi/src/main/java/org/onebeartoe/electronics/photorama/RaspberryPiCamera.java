@@ -18,20 +18,54 @@ public class RaspberryPiCamera implements Camera
     private Timer timer;
     
     private TimeLapseConfiguration configuration;
-
-//    private TimerTask captureTask;
     
     private Logger logger;
+    
+    private boolean timeLapseOn;
     
     public RaspberryPiCamera()
     {
         logger = Logger.getLogger( getClass().getName() );
-        
-//        captureTask = new CaptureTask();
                 
         configuration = new TimeLapseConfiguration();
         configuration.delay = 5000;
         configuration.outputDirectory = new File(".");
+    }
+    
+    /**
+     * calculates the number of milliseconds for the current time lapse setting
+     * @return 
+     */
+    private long calculateDelay()
+    {
+        int multiplier;
+        switch(configuration.unit)
+        {
+            case DAYS:
+            {
+                multiplier = 1000 * 60 * 60 * 24;
+                break;
+            }
+            case HOURS:
+            {
+                multiplier = 1000 * 60 * 60;
+                break;
+            }
+            case MINUTES:
+            {
+                multiplier = 1000 * 60;
+                break;
+            }
+            default:
+            {
+                // SECONDS            
+                multiplier = 1000;
+            }
+        }
+                
+        long delay = configuration.delay * multiplier;
+                
+        return delay;
     }
 
     @Override
@@ -40,24 +74,33 @@ public class RaspberryPiCamera implements Camera
         return configuration.delay;
     }
     
-    
-    
     @Override
     public void setTimelapse(long delay, FrequencyUnits unit)
     {
         configuration.delay = delay;
         configuration.unit = unit;
+        
+        if(timeLapseOn)
+        {
+            startTimelapse();
+        }
     }
 
     @Override
     public void startTimelapse() 
     {
         stopTimelapse();
-        
-        timer = new Timer();
-        Date now = new Date();
+    
+        timeLapseOn = true;
+                
         TimerTask captureTask = new CaptureTask();
-        timer.schedule(captureTask, now, configuration.delay);
+        Date now = new Date();
+        long delay = calculateDelay();
+        
+        logger.log(Level.INFO, "start time lapse: " + delay);
+        
+        timer = new Timer();                
+        timer.schedule(captureTask, now, delay);//configuration.delay);
     }
 
     @Override
@@ -71,6 +114,8 @@ public class RaspberryPiCamera implements Camera
         {
             timer.cancel();
         }
+        
+        timeLapseOn = false;
     }
 
     @Override
@@ -91,6 +136,11 @@ public class RaspberryPiCamera implements Camera
             try 
             {
                 commander.execute();
+                for(String line : commander.getStderr() )
+                {
+                    System.err.println(line);
+                }
+                
             } 
             catch (Exception ex) 
             {

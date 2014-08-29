@@ -22,7 +22,7 @@ public class FrequencyUnitServlet extends HttpServlet
 {
     private Logger logger;
 
-// get rid of this for production, only used for debugging
+//TODO: GET RID OF THIS for production, only used for debugging
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException 
     {
@@ -54,13 +54,14 @@ public class FrequencyUnitServlet extends HttpServlet
         super.init();
         
         logger = Logger.getLogger(getClass().getName());
-    }    
+    }
     
     private String updateFrequencyUnit(Camera camera, String unitName)
     {
         String result = "frequency unit ";
         try
         {
+            unitName = unitName.toUpperCase();
             FrequencyUnits unit = FrequencyUnits.valueOf(unitName);
             long delay = camera.getTimelapse();
             camera.setTimelapse(delay, unit);
@@ -75,6 +76,5 @@ public class FrequencyUnitServlet extends HttpServlet
         
         return result;
     }
-    
 
 }

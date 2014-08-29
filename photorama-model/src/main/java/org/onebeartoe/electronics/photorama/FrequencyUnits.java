@@ -6,7 +6,11 @@ package org.onebeartoe.electronics.photorama;
  */
 public enum FrequencyUnits 
 {
-    MINUTES,
     SECONDS,
+    MINUTES,    
     HOURS,
+    DAYS,
+    WEEKS,
+    MONTHS,
+    YEARS,
 }
