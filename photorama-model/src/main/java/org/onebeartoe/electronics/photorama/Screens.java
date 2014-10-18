@@ -6,9 +6,10 @@ package org.onebeartoe.electronics.photorama;
  */
 public enum Screens 
 {
-    TIME_LAPSE,
-    FREQUENCY_UNIT,
     FEQUENCY,
     FILENAMES,
-    RASPBERRY_PI
+    FREQUENCY_UNIT,
+    MODE,
+    TIME_LAPSE,
+    RASPBERRY_PI // screen to turn the machine off
 }

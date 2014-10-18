@@ -4,18 +4,24 @@ package org.onebeartoe.electronics.photorama;
 /**
  * @author Roberto Marquez
  */
-public interface Camera 
+public abstract class Camera 
 {
-    long getTimelapse();
+    private PhotoramaModes mode;
     
-    void setTimelapse(long delay, FrequencyUnits unit);    
+    public abstract long getTimelapse();
     
-    void startTimelapse();
+    public void setMode(PhotoramaModes mode)
+    {
+        this.mode = mode;
+        
+        stopTimelapse();
+    }
     
-    void stopTimelapse();
+    public abstract void setTimelapse(long delay, FrequencyUnits unit);    
     
-    void takeSnapshot();
+    public abstract void startTimelapse();
+    
+    public abstract void stopTimelapse();
+    
+    public abstract void takeSnapshot();
 }
-
-
-

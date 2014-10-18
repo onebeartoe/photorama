@@ -29,10 +29,10 @@ public class LcdKeypadPhotorama
             }                
             case FILENAMES:
             {
-                currentScreen = Screens.RASPBERRY_PI;
+                currentScreen = Screens.MODE;
                 break;
             }                
-            case RASPBERRY_PI:
+            case MODE:
             {
                 currentScreen = Screens.TIME_LAPSE;
                 break;

@@ -35,7 +35,7 @@ public class ConfigurationServlet extends HttpServlet
     }
     
     @Override
-    public void init() throws ServletException 
+    public void init() throws ServletException
     {
         super.init();
         
@@ -50,3 +50,4 @@ public class ConfigurationServlet extends HttpServlet
         }        
     }
 }
+

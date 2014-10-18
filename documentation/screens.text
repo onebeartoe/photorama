@@ -2,6 +2,14 @@
 
 
 
- Time Lapse     ->      Frequency Unit     ->        Fequency        ->                    Filenames                         Raspberry Pi
+         Mode            ->    Raspberry Pi
                                                                                                                              
-   on/off             hour/minute/second         XX [current unit]          timestamp/numbered/numbered with timestamp          On/Off
+Photo Booth/Time Lapse            On/Off                 
+     |          |
+     |          |
+     |	        |
+     |        on/off     ->        Frequency Unit         ->       Fequency        ->                    Filenames
+     |
+     |                              hour/minute/second          XX [current unit]          timestamp/numbered/numbered with timestamp
+     |
+   on/off			  

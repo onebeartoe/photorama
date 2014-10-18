@@ -6,20 +6,16 @@ import com.oracle.raspberry.pi.lcd.Lcd;
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalInput;
-import com.pi4j.io.gpio.GpioPinDigitalOutput;
 import com.pi4j.io.gpio.PinPullResistance;
-import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.RaspiPin;
 import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
 import com.pi4j.io.gpio.event.GpioPinListenerDigital;
 import com.pi4j.io.gpio.trigger.GpioCallbackTrigger;
-import com.pi4j.io.gpio.trigger.GpioSyncStateTrigger;
 import java.util.concurrent.Callable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.onebeartoe.electronics.photorama.Camera;
 import org.onebeartoe.electronics.photorama.RaspberryPiCamera;
-import org.onebeartoe.electronics.photorama.Screens;
 
 /**
  * @author Roberto Marquez
@@ -179,3 +175,4 @@ public class LcdKeypadPhotoramaApp
         gpio.shutdown();
     }
 }
+

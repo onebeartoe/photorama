@@ -1,7 +1,71 @@
 
+function changeControls(mode)
+{
+    switch(mode)
+    {
+        case "photo-booth":
+        {
+            // purposely fall into the foot pedal case            
+        }
+        case "foot-pedal":
+        {
+            hideElement("time-lapse-controls");
+            
+            break;
+        }
+        default:
+        {
+            // "time-lapse"
+            showElement("time-lapse-controls");
+        }
+    }
+}
+
+function hideElement(id)
+{
+    var element = document.getElementById(id);
+    element.style.display = 'none';
+}
+
+function httpCall()
+{
+    
+}
+
+function httpPost()
+{
+    
+}
+
+function modeChanged(mode)
+{
+    changeControls(mode);
+    
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function()
+    {
+        updateLogs(xmlhttp);
+    }
+    var url = "mode/" + mode;
+    xmlhttp.open("POST", url, true);
+    xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    xmlhttp.send("p1=a&p2=b");
+}
+
+function showElement(id)
+{
+    var element = document.getElementById(id);
+    element.style.display = 'block';
+}
+    
+function stopCamera()
+{
+    timeLapseChanged("off");
+}
+
 function timeLapseChanged(state)
 {
-//    alert('hi');
+    alert('hi from time lapse state change');
     
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange=function()
@@ -52,4 +116,13 @@ function timeLapseFrequencyUnitChanged(unit)
     xmlhttp.open("POST", url, true);
     xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     xmlhttp.send("p1=a&p2=b");
+}
+
+function updateLogs(xmlhttp)
+{
+    if (xmlhttp.readyState==4 && xmlhttp.status==200)      
+    {
+        var s = xmlhttp.responseText + "<br/>" + document.getElementById("logs").innerHTML;
+        document.getElementById("logs").innerHTML = s;
+    }    
 }

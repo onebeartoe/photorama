@@ -13,7 +13,7 @@ import org.onebeartoe.system.Filesystem;
 /**
  * @author Roberto Marquez
  */
-public class RaspberryPiCamera implements Camera
+public class RaspberryPiCamera extends Camera
 {    
     private Timer timer;
     
