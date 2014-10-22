@@ -122,7 +122,9 @@ public class RaspberryPiCamera extends Camera
     public void takeSnapshot() 
     {
         TimerTask captureTask = new CaptureTask();
-        timer.schedule(captureTask, null);
+        Timer  snapshotTimer = new Timer();
+        Date now = new Date();
+        snapshotTimer.schedule(captureTask, now);
     }
     
     private class CaptureTask extends TimerTask
@@ -136,10 +138,13 @@ public class RaspberryPiCamera extends Camera
             try 
             {
                 commander.execute();
+                StringBuilder sb = new StringBuilder();
                 for(String line : commander.getStderr() )
                 {
-                    System.err.println(line);
+                    sb.append(line);
+                    sb.append(System.lineSeparator() );                    
                 }
+                logger.log(Level.SEVERE, sb.toString() );
                 
             } 
             catch (Exception ex) 

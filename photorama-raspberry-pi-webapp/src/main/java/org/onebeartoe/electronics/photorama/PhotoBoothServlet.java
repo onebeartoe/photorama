@@ -4,11 +4,14 @@ package org.onebeartoe.electronics.photorama;
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalInput;
+import com.pi4j.io.gpio.Pin;
 import com.pi4j.io.gpio.PinPullResistance;
 import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.RaspiPin;
 import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
 import com.pi4j.io.gpio.event.GpioPinListenerDigital;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,9 +33,13 @@ public class PhotoBoothServlet extends HttpServlet implements GpioPinListenerDig
     
     private volatile boolean takingSnapshots;
     
-    private final long SNAPSHOT_DELAY = 3000;
+    // set the delay to 9.5 seconds between snapshots
+    private final long SNAPSHOT_DELAY = 9500;
     
-    private void delayedSnapshots(int count)
+    // On the Raspberry Pi model B, revision 2, this pin is labeled GPIO27
+    private Pin buttonPin = RaspiPin.GPIO_02;
+    
+    private void delayedSnapshots(int count) throws Exception
     {
         ServletContext servletContext = getServletContext();
         Camera camera = (Camera) servletContext.getAttribute(CAMERA_KEY);
@@ -63,12 +70,14 @@ public class PhotoBoothServlet extends HttpServlet implements GpioPinListenerDig
         GpioController gpio = (GpioController) servletContext.getAttribute(PHOTO_BOOTH_GPIO_CONTROLLER_KEY);
         if(gpio == null)
         {
+            System.out.println("provisioning GPIO.");
             gpio = GpioFactory.getInstance();
             servletContext.setAttribute(PHOTO_BOOTH_GPIO_CONTROLLER_KEY, gpio);
             
-            GpioPinDigitalInput photoBoothButton = gpio.provisionDigitalInputPin(RaspiPin.GPIO_18, 
+            GpioPinDigitalInput photoBoothButton = gpio.provisionDigitalInputPin(buttonPin, 
                                                                                  "photo booth button", 
-                                                                                 PinPullResistance.PULL_UP);
+                                                                                 PinPullResistance.PULL_DOWN);
+            System.out.println("GPIO provisioned.");
             photoBoothButton.addListener(this);
             servletContext.setAttribute(PHOTO_BOOTH_BUTTON_KEY, photoBoothButton);
         } 
@@ -78,7 +87,7 @@ public class PhotoBoothServlet extends HttpServlet implements GpioPinListenerDig
     public void handleGpioPinDigitalStateChangeEvent(GpioPinDigitalStateChangeEvent event) 
     {
         PinState state = event.getState();
-        if(state == PinState.HIGH)
+        if(state == PinState.LOW)
         {
             if(takingSnapshots)
             {
@@ -87,10 +96,23 @@ public class PhotoBoothServlet extends HttpServlet implements GpioPinListenerDig
             }
             else
             {
+                System.out.println("Photo booth taking snapshots.");
                 takingSnapshots = true;
-                delayedSnapshots(3);
+                try
+                {
+                    delayedSnapshots(3);
+                } 
+                catch (Exception ex)
+                {
+                    String message = "An exception was thrown while taking delayed snapshots.";
+                    Logger.getLogger(getClass().getName()).log(Level.SEVERE, message, ex);
+                }
                 takingSnapshots = false;
             }
+        }
+        else
+        {
+            System.out.println("Photo booth button pin state changed to HIGH.");
         }
     }    
 }

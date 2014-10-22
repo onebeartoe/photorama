@@ -65,7 +65,7 @@ function stopCamera()
 
 function timeLapseChanged(state)
 {
-    alert('hi from time lapse state change');
+//    alert('hi from time lapse state change');
     
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange=function()
