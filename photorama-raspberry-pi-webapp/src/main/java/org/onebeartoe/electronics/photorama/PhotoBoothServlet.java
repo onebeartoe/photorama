@@ -39,11 +39,10 @@ public class PhotoBoothServlet extends HttpServlet implements GpioPinListenerDig
     // On the Raspberry Pi model B, revision 2, this pin is labeled GPIO27
     private Pin buttonPin = RaspiPin.GPIO_02;
     
-    private void delayedSnapshots(int count) throws Exception
-    {
-        ServletContext servletContext = getServletContext();
-        Camera camera = (Camera) servletContext.getAttribute(CAMERA_KEY);
-        
+    Logger logger;
+    
+    private void delayedSnapshots(int count, Camera camera) throws Exception
+    {        
         for(int c=0; c<count; c++)
         {
             Sleeper.sleepo(SNAPSHOT_DELAY);
@@ -63,6 +62,8 @@ public class PhotoBoothServlet extends HttpServlet implements GpioPinListenerDig
     public void init() throws ServletException
     {
         super.init();
+        
+        logger = Logger.getLogger(getClass().getName());
         
         takingSnapshots = false;
         
@@ -96,18 +97,29 @@ public class PhotoBoothServlet extends HttpServlet implements GpioPinListenerDig
             }
             else
             {
-                System.out.println("Photo booth taking snapshots.");
-                takingSnapshots = true;
-                try
+                ServletContext servletContext = getServletContext();
+                Camera camera = (Camera) servletContext.getAttribute(CAMERA_KEY);
+                
+                if(camera.getMode() != PhotoramaModes.PHOTO_BOOTH)
                 {
-                    delayedSnapshots(3);
-                } 
-                catch (Exception ex)
-                {
-                    String message = "An exception was thrown while taking delayed snapshots.";
-                    Logger.getLogger(getClass().getName()).log(Level.SEVERE, message, ex);
+                    String message = "The photo booth button was pressed, but Photorama is not in photo booth mode.";
+                    logger.log(Level.WARNING, message);
                 }
-                takingSnapshots = false;
+                else
+                {
+                    System.out.println("Photo booth taking snapshots.");
+                    takingSnapshots = true;
+                    try
+                    {
+                        delayedSnapshots(3, camera);
+                    } 
+                    catch (Exception ex)
+                    {
+                        String message = "An exception was thrown while taking delayed snapshots.";
+                        logger.log(Level.SEVERE, message, ex);
+                    }
+                    takingSnapshots = false;                    
+                }
             }
         }
         else

@@ -46,6 +46,8 @@ public class ConfigurationServlet extends HttpServlet
         if(camera == null)
         {
             camera = new RaspberryPiCamera();
+            camera.setMode(PhotoramaModes.OFF);
+            
             servletContext.setAttribute(CAMERA_KEY, camera);
         }        
     }
