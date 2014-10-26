@@ -23,6 +23,8 @@ public class RaspberryPiCamera extends Camera
     
     private boolean timeLapseOn;
     
+    private final String PI_HOME = "/home/pi/";
+    
     public RaspberryPiCamera()
     {
         logger = Logger.getLogger( getClass().getName() );
@@ -69,9 +71,59 @@ public class RaspberryPiCamera extends Camera
     }
 
     @Override
+    public String getOutputPath()
+    {
+        String subpath;
+        switch(mode)
+        {
+            case FOOT_PEDAL:
+            {
+                subpath = "foot-pedal/";
+                break;
+            }
+            case PHOTO_BOOTH:
+            {
+                subpath = "photo-booth/";
+                break;
+            }
+            case TIME_LAPSE:
+            {
+                subpath = "time-lapse/";
+                break;
+            }
+            default:
+            {
+                // off
+                subpath = "";
+            }
+        }
+        outputPath = PI_HOME + subpath;
+        
+        // make the directory if it does not exist
+        File f = new File(outputPath);
+        if( !f.exists() )
+        {
+            f.mkdirs();
+        }
+        
+        return outputPath;
+    }
+    
+    @Override
     public long getTimelapse() 
     {
         return configuration.delay;
+    }
+    
+    @Override
+    public void setMode(PhotoramaModes mode)
+    {
+        super.setMode(mode);
+        
+        // update the output path
+        String outpath = getOutputPath();
+        
+        setOutputPath(outpath);
     }
     
     @Override
@@ -132,8 +184,11 @@ public class RaspberryPiCamera extends Camera
         @Override
         public void run() 
         {
-            String filename = Filesystem.systimeToFilename();
-            String command = "raspistill -o /home/pi/" + filename + ".jpg";
+            String parentPath = getOutputPath();
+            String filename = Filesystem.systimeToFilename();            
+            String outputPath = parentPath + filename;
+            
+            String command = "raspistill --quality 75 --output " + outputPath + ".jpg";
             Commander commander = new Commander(command);
             try 
             {
