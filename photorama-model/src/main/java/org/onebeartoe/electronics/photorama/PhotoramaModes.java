@@ -8,5 +8,6 @@ public enum PhotoramaModes
 {
     FOOT_PEDAL,
     PHOTO_BOOTH,
-    TIME_LAPSE
+    TIME_LAPSE,
+    OFF
 }
