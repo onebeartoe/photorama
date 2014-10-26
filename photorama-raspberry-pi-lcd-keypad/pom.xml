@@ -41,7 +41,13 @@
             <groupId>org.onebeartoe.electronics.raspberry.pi</groupId>  
             <artifactId>photorama-raspberry-pi</artifactId>  
             <version>1.0-SNAPSHOT</version>
-        </dependency>            
+        </dependency>
+                 
+        <dependency>
+            <groupId>se.hirt</groupId>  
+            <artifactId>lcd</artifactId>  
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>    
             
     <build>
