@@ -4,10 +4,8 @@ package org.onebeartoe.electronics.photorama;
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalInput;
-import com.pi4j.io.gpio.Pin;
 import com.pi4j.io.gpio.PinPullResistance;
 import com.pi4j.io.gpio.PinState;
-import com.pi4j.io.gpio.RaspiPin;
 import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
 import com.pi4j.io.gpio.event.GpioPinListenerDigital;
 import java.util.logging.Level;
@@ -17,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import static org.onebeartoe.electronics.photorama.ConfigurationServlet.CAMERA_KEY;
+import static org.onebeartoe.electronics.photorama.PhotoBoothButtonTester.buttonPin;
 import org.onebeartoe.system.Sleeper;
 
 /**
@@ -37,7 +36,7 @@ public class PhotoBoothServlet extends HttpServlet implements GpioPinListenerDig
     private final long SNAPSHOT_DELAY = 9500;
     
     // On the Raspberry Pi model B, revision 2, this pin is labeled GPIO27
-    private Pin buttonPin = RaspiPin.GPIO_02;
+//    public static final Pin buttonPin = RaspiPin.GPIO_02;
     
     Logger logger;
     
@@ -71,14 +70,15 @@ public class PhotoBoothServlet extends HttpServlet implements GpioPinListenerDig
         GpioController gpio = (GpioController) servletContext.getAttribute(PHOTO_BOOTH_GPIO_CONTROLLER_KEY);
         if(gpio == null)
         {
-            System.out.println("provisioning GPIO.");
+            System.out.println("Provisioning GPIO.");
             gpio = GpioFactory.getInstance();
             servletContext.setAttribute(PHOTO_BOOTH_GPIO_CONTROLLER_KEY, gpio);
             
-            GpioPinDigitalInput photoBoothButton = gpio.provisionDigitalInputPin(buttonPin, 
-                                                                                 "photo booth button", 
-                                                                                 PinPullResistance.PULL_DOWN);
-            System.out.println("GPIO provisioned.");
+        GpioPinDigitalInput photoBoothButton = gpio.provisionDigitalInputPin(buttonPin, 
+                                                                             "photo booth button", 
+                                                                             PinPullResistance.PULL_UP);   // tried with the Adafruit button
+// worked for the tacktile/simple push button                                PinPullResistance.PULL_DOWN);
+            System.out.println("GPIO provisioned :)");
             photoBoothButton.addListener(this);
             servletContext.setAttribute(PHOTO_BOOTH_BUTTON_KEY, photoBoothButton);
         } 

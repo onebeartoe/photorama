@@ -55,7 +55,7 @@
 		<configuration>
 		    <archive>
 			<manifest>
-			    <mainClass>org.onebeartoe.electronics.photorama.PhotoramaKeypadTesting</mainClass>
+			    <mainClass>org.onebeartoe.electronics.photorama.PhotoBoothButtonTester</mainClass>
 			</manifest>
 		    </archive>
 		    <descriptorRefs>
