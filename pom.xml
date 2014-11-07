@@ -15,7 +15,7 @@
     <modules>
         <module>photorama-model</module>
         <module>photorama-raspberry-pi</module>
-        <module>photorama-raspberry-pi-lcd-keypad</module>
+        <!--module>photorama-raspberry-pi-lcd-keypad</module-->
         <module>photorama-raspberry-pi-webapp</module>
         <module>photorama-viewer-webapp</module>
     </modules>
