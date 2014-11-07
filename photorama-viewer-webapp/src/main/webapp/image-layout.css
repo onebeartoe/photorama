@@ -1,0 +1,35 @@
+
+#thumb_holder 
+{
+	width: 90%;
+	margin: 5px 20px;
+}
+
+div.thumb 
+{
+	float: left;
+	margin-right: 20px;
+	margin-left: 20px;
+	width: 29%;
+	margin-bottom: 10px;
+}
+
+div.thumb img
+{
+	display: block;
+   margin-left: auto;
+    margin-right: auto;
+}
+
+
+div.thumb p 
+{
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+div.spacer 
+{
+	clear: both;
+	/*stops the float*/
+}

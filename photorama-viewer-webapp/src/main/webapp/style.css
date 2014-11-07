@@ -1,0 +1,79 @@
+
+body
+{        
+//    background-color:  gray;
+    font-family: Verdana, Arial, sans-serif;		
+}
+
+div.copyspace
+{
+//    border-color: wheat;
+}
+
+div.copyspace p
+{
+//    border-color: wheat;
+}
+
+div.featuredProject
+{
+//        background: lightgray;
+//        border-color: wheat;        
+}
+
+div.menu 
+{
+//    border-color:wheat;
+}
+
+div.menu a 
+{
+//    border-color: wheat;    
+    color: black;    
+    font-weight: bold;          
+    text-decoration: none;
+}
+
+div.menu a:link
+{
+    background: lightgray;
+}
+
+div.menu a:visited 
+{
+    background: lightgray;
+}
+
+div.menu a:hover 
+{
+    background: silver;
+}
+
+table
+{
+    border: 1px dotted #666677;
+    color: #000000;
+    width: 100%;	
+}
+
+tr.odd 
+{
+    background-color: #FFFFFF;
+}
+
+tr.even 
+{
+    background-color: #DDDDDD;
+}
+
+.featuredProjectNavigation
+{
+//        background-color: lightgray;
+        
+        border-color: black;
+}
+
+.featuredProjectNavigation a:hover 
+{
+        background-color: silver;
+}

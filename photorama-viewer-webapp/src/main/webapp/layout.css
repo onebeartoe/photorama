@@ -1,0 +1,211 @@
+
+br.clearingBreak
+{
+    clear: both;
+}
+
+div.copyspace
+{
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 25px;
+    
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+        
+    padding-bottom: 5px;
+    
+    width: 85%;
+}
+
+div.copyspace h3 
+{
+    font-size: large;
+    text-align: left;
+    padding: 5px;
+    margin: 0px;
+}
+
+div.copyspace p
+{
+    border-width: 2px;
+    border-style: solid;    
+    border-radius: 25px;
+    
+    display: block;
+    
+    letter-spacing: 1px;
+    
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1%;    
+    
+    text-align: left;
+    text-indent: 2%;
+    
+    width: 95%;
+}
+
+div.featuredProject
+{
+        border-style: solid;
+        border-radius: 25px;
+        border-width: 2px;
+        
+        display: block;	
+
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 1%;
+    
+        padding-bottom: 2%;
+        padding-top: 1%;
+        
+        width: 95%;  
+}
+
+div.featuredProject img
+{
+    display: block;	
+    
+    margin-left: auto;
+    margin-right: auto;    
+}
+
+div.featuredProject iframe
+{
+    display: block;	
+    
+    margin-left: auto;
+    margin-right: auto;
+    
+    padding-bottom: 3%;
+}
+
+div.featuredProject p
+{
+    border-style: none;
+}
+
+div.menu 
+{
+    border: 3px solid;
+    border-radius: 25px;
+    
+    display: block;    
+    
+    margin-top: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    
+    padding-bottom: 1%;
+    
+    width: 85%;
+}
+
+div.menu a 
+{
+    border-width: 2px;
+    border-radius: 25px;
+    border-style: solid;
+    display: block;	
+    letter-spacing: 1px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1%;
+    text-align: left;
+    text-indent: 2%;
+    width: 95%;
+}
+
+div.menu a:hover 
+{
+    letter-spacing: 2px;
+}
+
+div.menu h3 
+{
+    font-size: large;
+    text-align: left;
+    padding: 5px;
+    margin: 0px;
+}
+
+div.nav
+{
+    margin-left: auto;
+    margin-right: auto;
+
+    width: 85%;        
+}
+
+div.personalNav
+{
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;        
+}
+
+div.sideBySide
+{    	
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+div.sideBySideLeft
+{
+    float: left;
+    margin-top: 1%;
+    position: relative;    
+    width: 50%;
+}
+
+div.sideBySideRight
+{
+        float: right;
+        height: 90%;
+        margin-top: 1%;
+        position: relative;
+        vertical-align: top;
+        width: 49%;
+}
+
+ul
+{
+    padding-bottom: 20px;	
+}
+
+li
+{
+    padding-bottom: 15px;	
+}
+
+.featuredProjectNavigation
+{        
+        border-radius: 10px;
+        border-style: solid;        
+        border-width: 2px;
+        
+        margin: 2%;
+        padding: 2%;
+}
+
+.featuredProjectNavigationLink a:link 
+{
+        text-decoration:none;
+}
+
+.grailsLogo
+{
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
+    padding: 5px;
+}
+
+.grailsLogo a:link 
+{
+        text-decoration:none;
+}

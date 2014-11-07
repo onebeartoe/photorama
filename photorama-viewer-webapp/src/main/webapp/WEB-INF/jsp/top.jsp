@@ -7,10 +7,10 @@
     <head>
         <title>electronics.onebeartoe.net - projects for beginner to intermediate electronics enthusiasts</title>       
 
-        <link rel="stylesheet" href="http://electronics.onebeartoe.org/css/layout.css" />
-	<link rel="stylesheet" href="http://electronics.onebeartoe.org/css/style.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/layout.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/style.css" />
         
-	<link rel="stylesheet" href="http://www.onebeartoe.com/css/liquid.image.layout.css" />		
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/image-layout.css" />		
 	
         <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />	
     </head>
