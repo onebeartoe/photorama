@@ -48,7 +48,7 @@ public class PhotoBoothButtonTester implements GpioPinListenerDigital
             s = "high: ";
         }
            
-        System.out.println("Photo booth button pin state changed to " + s + state + ".");
+        System.out.println("*Photo booth button pin state changed to " + s + state + ".");
     }    
     
     public static void main(String[] args) throws Exception
