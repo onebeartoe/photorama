@@ -48,6 +48,9 @@ public class ConfigurationServlet extends HttpServlet
             camera = new RaspberryPiCamera();
             camera.setMode(PhotoramaModes.OFF);
             
+            // The mode was updated for the Spurs party!
+            camera.setMode(PhotoramaModes.PHOTO_BOOTH);
+            
             servletContext.setAttribute(CAMERA_KEY, camera);
         }        
     }

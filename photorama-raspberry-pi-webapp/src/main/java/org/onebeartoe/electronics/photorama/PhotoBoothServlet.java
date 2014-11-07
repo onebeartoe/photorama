@@ -8,6 +8,10 @@ import com.pi4j.io.gpio.PinPullResistance;
 import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
 import com.pi4j.io.gpio.event.GpioPinListenerDigital;
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+import static java.lang.System.out;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletContext;
@@ -39,6 +43,9 @@ public class PhotoBoothServlet extends HttpServlet implements GpioPinListenerDig
 //    public static final Pin buttonPin = RaspiPin.GPIO_02;
     
     Logger logger;
+  
+// didnt work in headless mode    
+//    private Robot robot;
     
     private void delayedSnapshots(int count, Camera camera) throws Exception
     {        
@@ -70,18 +77,28 @@ public class PhotoBoothServlet extends HttpServlet implements GpioPinListenerDig
         GpioController gpio = (GpioController) servletContext.getAttribute(PHOTO_BOOTH_GPIO_CONTROLLER_KEY);
         if(gpio == null)
         {
-            System.out.println("Provisioning GPIO.");
+            System.out.println("*Provisioning GPIO.");
             gpio = GpioFactory.getInstance();
             servletContext.setAttribute(PHOTO_BOOTH_GPIO_CONTROLLER_KEY, gpio);
             
-        GpioPinDigitalInput photoBoothButton = gpio.provisionDigitalInputPin(buttonPin, 
+            GpioPinDigitalInput photoBoothButton = gpio.provisionDigitalInputPin(buttonPin, 
                                                                              "photo booth button", 
                                                                              PinPullResistance.PULL_UP);   // tried with the Adafruit button
 // worked for the tacktile/simple push button                                PinPullResistance.PULL_DOWN);
-            System.out.println("GPIO provisioned :)");
+            System.out.println("*GPIO provisioned :)");
             photoBoothButton.addListener(this);
             servletContext.setAttribute(PHOTO_BOOTH_BUTTON_KEY, photoBoothButton);
-        } 
+        }
+        
+//        try
+//        {
+//            robot = new Robot();
+//        } 
+//        catch (AWTException ex)
+//        {
+//            String message = "No robots allowed!";
+//            logger.log(Level.SEVERE, message, ex);
+//        }
     }
     
     @Override
@@ -90,6 +107,7 @@ public class PhotoBoothServlet extends HttpServlet implements GpioPinListenerDig
         PinState state = event.getState();
         if(state == PinState.LOW)
         {
+            System.out.println("Photo booth button pin state changed to LOW.");
             if(takingSnapshots)
             {
                 String message = "The photobooth button was pressed, while already taking photos.";
@@ -111,14 +129,19 @@ public class PhotoBoothServlet extends HttpServlet implements GpioPinListenerDig
                     takingSnapshots = true;
                     try
                     {
-                        delayedSnapshots(3, camera);
+                        camera.takeSnapshot();
+//                        delayedSnapshots(3, camera);
                     } 
                     catch (Exception ex)
                     {
                         String message = "An exception was thrown while taking delayed snapshots.";
                         logger.log(Level.SEVERE, message, ex);
                     }
-                    takingSnapshots = false;                    
+                    takingSnapshots = false;
+                    
+//                    int k = KeyEvent.VK_SPACE;
+//                    robot.keyPress(k);
+//                    robot.keyRelease(k);
                 }
             }
         }

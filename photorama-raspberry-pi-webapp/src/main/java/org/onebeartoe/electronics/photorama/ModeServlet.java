@@ -1,6 +1,7 @@
 
 package org.onebeartoe.electronics.photorama;
 
+import java.io.File;
 import javax.servlet.ServletContext;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,9 @@ import org.onebeartoe.web.PlainTextResponseServlet;
 @WebServlet(urlPatterns = {"/mode/*"})
 public class ModeServlet extends PlainTextResponseServlet//HttpServlet
 {
+    private final String PI_HOME = "/home/pi/photorama/viewer-webapp/";
+//    private final String PI_HOME = "/home/pi/";
+        
     @Override
     public String buildText(HttpServletRequest request, HttpServletResponse response)
     {
@@ -28,12 +32,55 @@ public class ModeServlet extends PlainTextResponseServlet//HttpServlet
         return result;
     }
     
+    private String buildOutpath(PhotoramaModes mode)
+    {
+        String subpath;
+        switch(mode)
+        {
+            case FOOT_PEDAL:
+            {
+                subpath = "foot-pedal/";
+                break;
+            }
+            case PHOTO_BOOTH:
+            {
+                subpath = "photo-booth/";
+                break;
+            }
+            case TIME_LAPSE:
+            {
+                subpath = "time-lapse/";
+                break;
+            }
+            default:
+            {
+                // off
+                subpath = "";
+            }
+        }
+        
+//        add a foleer counter
+        
+        String outputPath = PI_HOME + subpath;
+        
+        // make the directory if it does not exist
+        File f = new File(outputPath);
+        if( !f.exists() )
+        {
+            f.mkdirs();
+        }
+        
+        return outputPath;
+    }
+    
     private String updateMode(PhotoramaModes mode)
     {        
         ServletContext context = getServletContext();
         Camera camera = (Camera) context.getAttribute(CAMERA_KEY);
         camera.setMode(mode);
-                
+        String outpath = buildOutpath(mode);
+        camera.setOutputPath(outpath);
+        
         String result = "mode changed to: " + mode;
         
         return result;
