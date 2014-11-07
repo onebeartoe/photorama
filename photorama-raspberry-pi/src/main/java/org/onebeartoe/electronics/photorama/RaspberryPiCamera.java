@@ -23,8 +23,6 @@ public class RaspberryPiCamera extends Camera
     
     private boolean timeLapseOn;
     
-    private final String PI_HOME = "/home/pi/";
-    
     public RaspberryPiCamera()
     {
         logger = Logger.getLogger( getClass().getName() );
@@ -73,39 +71,6 @@ public class RaspberryPiCamera extends Camera
     @Override
     public String getOutputPath()
     {
-        String subpath;
-        switch(mode)
-        {
-            case FOOT_PEDAL:
-            {
-                subpath = "foot-pedal/";
-                break;
-            }
-            case PHOTO_BOOTH:
-            {
-                subpath = "photo-booth/";
-                break;
-            }
-            case TIME_LAPSE:
-            {
-                subpath = "time-lapse/";
-                break;
-            }
-            default:
-            {
-                // off
-                subpath = "";
-            }
-        }
-        outputPath = PI_HOME + subpath;
-        
-        // make the directory if it does not exist
-        File f = new File(outputPath);
-        if( !f.exists() )
-        {
-            f.mkdirs();
-        }
-        
         return outputPath;
     }
     
