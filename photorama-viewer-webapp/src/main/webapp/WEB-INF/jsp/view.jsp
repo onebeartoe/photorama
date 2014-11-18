@@ -1,6 +1,6 @@
 
 	<div class="copyspace">
-	    <h3>onebeartoe photorama viewer - ${model.path}</h3>
+	    <h3>Go Spurs Show! - ${model.path}</h3>
 
             <div class="featuredProject">
                 <h3>Directories:</h3>
