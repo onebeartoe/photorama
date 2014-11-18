@@ -150,6 +150,11 @@ public class RaspberryPiCamera extends Camera
         public void run() 
         {
             String parentPath = getOutputPath();
+            if( !parentPath.endsWith("/") )
+            {
+                parentPath += "/";
+            }
+            
             String filename = Filesystem.systimeToFilename();            
             String outputPath = parentPath + filename;
             
