@@ -16,6 +16,6 @@
                   httpsPort="9443"
                   host="*" />
 
-	<webApplication location="/home/pi/photorama/viewer-webapp"/> 
+    <webApplication location="/home/pi/photorama/viewer-webapp"/>
 
 </server>
