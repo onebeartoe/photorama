@@ -38,8 +38,12 @@ public class TimeLapseServlet extends HttpServlet
         Camera camera = (Camera) context.getAttribute(CAMERA_KEY);
         
         // remove the leading forward slash
-        String state = request.getPathInfo().substring(1);
-        state = updateCameraState(camera, state);
+        String path = request.getPathInfo().substring(1);
+        String state = "not in time lapse mode: " + path;
+        if(camera.mode == PhotoramaModes.TIME_LAPSE)
+        {
+            state = updateCameraState(camera, path);
+        }
         
         OutputStream os = response.getOutputStream();
         PrintWriter pw = new PrintWriter(os);
@@ -65,6 +69,8 @@ public class TimeLapseServlet extends HttpServlet
             {
                 case "on":
                 {
+                    String outpath = ModeServlet.buildOutpath(camera.mode);
+                    camera.setOutputPath(outpath);
                     camera.startTimelapse();
                     break;
                 }

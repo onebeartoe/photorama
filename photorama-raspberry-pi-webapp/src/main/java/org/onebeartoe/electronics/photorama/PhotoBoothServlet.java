@@ -8,10 +8,6 @@ import com.pi4j.io.gpio.PinPullResistance;
 import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
 import com.pi4j.io.gpio.event.GpioPinListenerDigital;
-import java.awt.AWTException;
-import java.awt.Robot;
-import java.awt.event.KeyEvent;
-import static java.lang.System.out;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletContext;
@@ -83,22 +79,13 @@ public class PhotoBoothServlet extends HttpServlet implements GpioPinListenerDig
             
             GpioPinDigitalInput photoBoothButton = gpio.provisionDigitalInputPin(buttonPin, 
                                                                              "photo booth button", 
-                                                                             PinPullResistance.PULL_UP);   // tried with the Adafruit button
-// worked for the tacktile/simple push button                                PinPullResistance.PULL_DOWN);
+                                                                             PinPullResistance.PULL_UP);   // works with the Adafruit massive arcade button
+//                                                                           PinPullResistance.PULL_DOWN); // works with a tactile/simple push button
+            
             System.out.println("*GPIO provisioned :)");
             photoBoothButton.addListener(this);
             servletContext.setAttribute(PHOTO_BOOTH_BUTTON_KEY, photoBoothButton);
         }
-        
-//        try
-//        {
-//            robot = new Robot();
-//        } 
-//        catch (AWTException ex)
-//        {
-//            String message = "No robots allowed!";
-//            logger.log(Level.SEVERE, message, ex);
-//        }
     }
     
     @Override
@@ -129,6 +116,8 @@ public class PhotoBoothServlet extends HttpServlet implements GpioPinListenerDig
                     takingSnapshots = true;
                     try
                     {
+                        String outpath = ModeServlet.buildOutpath(camera.mode);
+                        camera.setOutputPath(outpath);
                         camera.takeSnapshot();
 //                        delayedSnapshots(3, camera);
                     } 
@@ -138,10 +127,6 @@ public class PhotoBoothServlet extends HttpServlet implements GpioPinListenerDig
                         logger.log(Level.SEVERE, message, ex);
                     }
                     takingSnapshots = false;
-                    
-//                    int k = KeyEvent.VK_SPACE;
-//                    robot.keyPress(k);
-//                    robot.keyRelease(k);
                 }
             }
         }
