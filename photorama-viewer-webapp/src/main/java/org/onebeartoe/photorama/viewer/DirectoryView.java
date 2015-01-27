@@ -16,7 +16,8 @@ public class DirectoryView
     
     public List<String> videos;
 
-    public List<String> getDirectories() {
+    public List<String> getDirectories() 
+    {
         return directories;
     }
 

@@ -13,6 +13,8 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/image-layout.css" />		
 	
         <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />	
+        
+         <meta http-equiv="refresh" content="20">
     </head>
 
     <body>
