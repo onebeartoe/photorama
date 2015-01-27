@@ -54,6 +54,7 @@
                 </div>
             </div>
         </div>
+
 	<div class="copyspace">
 	    <h3>onebeartoe photorama</h3>
 

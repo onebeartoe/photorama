@@ -118,6 +118,7 @@ function timeLapseFrequencyUnitChanged(unit)
     xmlhttp.send("p1=a&p2=b");
 }
 
+// maybe this could be renamed to logServerResponse()
 function updateLogs(xmlhttp)
 {
     if (xmlhttp.readyState==4 && xmlhttp.status==200)      
