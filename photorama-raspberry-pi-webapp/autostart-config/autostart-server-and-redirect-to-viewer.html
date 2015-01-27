@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        <script>
+            var ipAndPort = "http://192.168.1.103:9080";
+            
+            var servletInitDelay = 1000 * 1; // one second after page load
+            setTimeout(
+                    function()
+                    {
+                        var xmlhttp = new XMLHttpRequest();
+                        xmlhttp.onreadystatechange=function()
+                        {
+                            if (xmlhttp.readyState==4 && xmlhttp.status==200)      
+                            {
+                                var s = xmlhttp.responseText + "<br/>" + document.getElementById("logs").innerHTML;
+                     //           document.getElementById("logs").innerHTML = s;
+                            }
+                        }
+                        var url = ipAndPort + "/photorama/configuration";
+                        xmlhttp.open("GET", url, true);
+                        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+                        xmlhttp.send("p1=a&p2=b");
+                    }
+                    , servletInitDelay);
+                    
+            setTimeout(
+                    function()
+                    {
+                        var xmlhttp = new XMLHttpRequest();
+                        xmlhttp.onreadystatechange=function()
+                        {
+                            if (xmlhttp.readyState==4 && xmlhttp.status==200)      
+                            {
+                                var s = xmlhttp.responseText + "<br/>" + document.getElementById("logs").innerHTML;
+                     //           document.getElementById("logs").innerHTML = s;
+                            }
+                        }
+                        var url = ipAndPort + "/go-spurs-show/";
+                        xmlhttp.open("GET", url, true);
+                        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+                        xmlhttp.send("p1=a&p2=b");
+                    }
+                    , servletInitDelay);
+                    
+            
+            
+            var viewerDelay = 1000 * 60 * 10; // 5 minutes later the photo booth starts
+            setTimeout(
+                    function()
+                    {
+                        window.location = ipAndPort + "/go-spurs-show/view/photo-booth";
+                    }
+                    , viewerDelay);
+        </script> 
+        
+        <div>
+            Starting onebeartoe photo booth...
+        </div>
+    </body>
+</html>

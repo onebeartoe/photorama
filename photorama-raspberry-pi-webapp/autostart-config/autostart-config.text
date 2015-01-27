@@ -1,0 +1,11 @@
+pi@raspberrypi ~ $ sudo cat /etc/xdg/lxsession/LXDE/autostart
+@lxpanel --profile LXDE
+@pcmanfm --desktop --profile LXDE
+#@xscreensaver -no-splash
+@xset s off
+@xset -dpms
+@xset s noblank
+
+@midori -e Fullscreen -a /home/pi/photorama/autostart-server-and-redirect-to-viewer.html
+#@midori -e Fullscreen -a http://localhost:9080/go-spurs-show/view/photo-booth
+

@@ -1,0 +1,34 @@
+
+http://www.raspberrypi.org/forums/viewtopic.php?f=66&t=18200
+
+
+by carlhage » Sat Mar 15, 2014 2:22 am
+I finally had success disabling blanking with the default Raspbian installation. The xset program is not installed by default, so I did the "sudo apt-get install x11-xserver-utils". I tested using the "xset q" command. To disable the screen blanking with the default LXDE, edit the file:
+/etc/xdg/lxsession/LXDE/autostart
+comment out a xscreensaver command, and add these xset lines
+
+Code: Select all
+    #@xscreensaver -no-splash
+    @xset s off
+    @xset -dpms
+    @xset s noblank
+
+
+
+More info at: http://www.raspberrypi.org/phpBB3/viewtopic.php?f=91&t=57552
+
+    Posts: 2
+    Joined: Sat Mar 15, 2014 1:53 am
+
+by naumann » Tue Jul 22, 2014 11:03 am
+by Rasadmin worked for me :-)
+
+sudo nano /etc/lightdm/lightdm.conf
+
+In that file, look for:
+[SeatDefault]
+
+and insert this line:
+xserver-command=X -s 0 dpms
+
+My test monitor has been on for a couple of days now :-)
