@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.onebeartoe.media.players.randomjuke.photorama.state.buider.maven.FXMLController">
+    <children>
+      <BorderPane prefHeight="200.0" prefWidth="320.0">
+         <top>
+            <VBox prefHeight="76.0" prefWidth="320.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="stateLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="44.0" prefWidth="320.0" text="State Label" textAlignment="CENTER" />
+                    <Label fx:id="stateValueLabel" alignment="CENTER" contentDisplay="CENTER" minHeight="16" minWidth="69" prefHeight="34.0" prefWidth="320.0" text="State Value Label" textAlignment="CENTER" />
+               </children>
+            </VBox>
+         </top>
+         <center>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <left>
+                    <Button fx:id="button" onAction="#handleLeftButtonAction" text="Left" BorderPane.alignment="CENTER" />
+               </left>
+               <bottom>
+                  <Button mnemonicParsing="false" text="Down" BorderPane.alignment="CENTER" />
+               </bottom>
+               <right>
+                  <Button mnemonicParsing="false" onAction="#onRightButtonAction" text="Right" BorderPane.alignment="CENTER" />
+               </right>
+               <center>
+                  <Button mnemonicParsing="false" text="Select" BorderPane.alignment="CENTER" />
+               </center>
+               <top>
+                  <Button mnemonicParsing="false" text="Up" BorderPane.alignment="CENTER" />
+               </top>
+            </BorderPane>
+         </center>
+      </BorderPane>
+    </children>
+</AnchorPane>
