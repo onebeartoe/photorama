@@ -1,42 +1,31 @@
 
-package org.onebeartoe.electronics.photorama;
+package org.onebeartoe.electronics.photorama.states;
 
 /**
  * @author Roberto Marquez
  */
-public class LcdKeypadPhotorama 
+public class Photorama 
 {
-    private Screens currentScreen;
-    
-    public void nextScreen()
+    private PhotoramaState rootState;
+
+    public Photorama()
     {
-        switch(currentScreen)
-        {
-            case TIME_LAPSE:
-            {
-                currentScreen = Screens.FREQUENCY_UNIT;
-                break;
-            }
-            case FREQUENCY_UNIT:
-            {
-                currentScreen = Screens.FEQUENCY;
-                break;
-            }
-            case FEQUENCY:
-            {
-                currentScreen = Screens.FILENAMES;
-                break;
-            }                
-            case FILENAMES:
-            {
-                currentScreen = Screens.MODE;
-                break;
-            }                
-            case MODE:
-            {
-                currentScreen = Screens.TIME_LAPSE;
-                break;
-            }
-        }
+        populateStates();
+    }
+    
+    public PhotoramaState getRootState()
+    {
+        return rootState;
+    }
+    
+    private void populateStates()
+    {        
+        PhotoramaState rightState = new PhotoramaRaspberryPiState();
+        
+        rootState = new PhotoramaModeState();
+        rootState.setRightButton(rightState);
+        
+        rightState.setLeftButton(rootState);
+       
     }
 }
