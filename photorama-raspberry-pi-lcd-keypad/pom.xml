@@ -10,9 +10,7 @@
     </parent>
 
     <groupId>org.onebeartoe.electronics</groupId>
-    
     <artifactId>photorama-raspberry-pi-lcd-keypad</artifactId>
-    
     <version>0.0.1-SNAPSHOT</version>
     
     <name>onebeartoe-photorama-raspberry-pi-lcd</name>
