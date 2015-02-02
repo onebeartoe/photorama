@@ -29,7 +29,7 @@
                   <Button mnemonicParsing="false" onAction="#onRightButtonAction" text="Right" BorderPane.alignment="CENTER" />
                </right>
                <center>
-                  <Button mnemonicParsing="false" text="Select" BorderPane.alignment="CENTER" />
+                  <Button mnemonicParsing="false" onAction="#onSelectButttonAction" text="Select" BorderPane.alignment="CENTER" />
                </center>
                <top>
                   <Button mnemonicParsing="false" text="Up" BorderPane.alignment="CENTER" />

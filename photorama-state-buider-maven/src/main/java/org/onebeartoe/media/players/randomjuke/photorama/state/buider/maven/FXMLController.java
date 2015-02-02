@@ -1,3 +1,5 @@
+
+//TODO: rename this package to org.onebeartoe.photorama.state.builder
 package org.onebeartoe.media.players.randomjuke.photorama.state.buider.maven;
 
 import java.net.URL;
@@ -5,7 +7,11 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import org.onebeartoe.electronics.photorama.Camera;
+import org.onebeartoe.electronics.photorama.RaspberryPiCamera;
+import org.onebeartoe.electronics.photorama.mock.MockCamera;
 import org.onebeartoe.electronics.photorama.states.Photorama;
 import org.onebeartoe.electronics.photorama.states.PhotoramaState;
 
@@ -15,7 +21,8 @@ public class FXMLController implements Initializable
     
     public FXMLController()
     {
-        Photorama photorama = new Photorama();
+        Camera camera = new MockCamera();
+        Photorama photorama = new Photorama(camera);
         currentState = photorama.getRootState();
     }
     
@@ -28,7 +35,7 @@ public class FXMLController implements Initializable
     @FXML
     private void handleLeftButtonAction(ActionEvent event) 
     {
-        System.out.println("Left was clicked.");
+        printButtonAction(event);
         
         currentState = currentState.leftButton();
         
@@ -44,11 +51,30 @@ public class FXMLController implements Initializable
     @FXML
     private void onRightButtonAction(ActionEvent event)
     {
-        System.out.println("Riht was clicked.");
+        printButtonAction(event);
         
         currentState = currentState.rightButton();
         
         updateLabels();
+    }
+    
+    @FXML
+    private void onSelectButttonAction(ActionEvent event)
+    {
+        printButtonAction(event);
+        
+        currentState = currentState.selectButton();
+        
+        updateLabels();
+    }
+    
+    private void printButtonAction(ActionEvent event)
+    {
+        Object o = event.getSource();
+        Button button = (Button) o;
+        String text = button.getText();
+        
+        System.out.println(text + " was clicked.");
     }
     
     private void updateLabels()
