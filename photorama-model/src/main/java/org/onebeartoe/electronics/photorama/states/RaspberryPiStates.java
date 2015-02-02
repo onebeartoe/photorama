@@ -6,13 +6,14 @@ import org.onebeartoe.electronics.photorama.Camera;
 /**
  * @author Roberto Marquez
  */
-public class PhotoramaStates extends RootState
+public class RaspberryPiStates extends RootState
 {
 
-   
+ 
+    
     @Override
     public String getLabel()
     {
-        return "Photorama";
+        return "Raspberry Pi";
     }
 }

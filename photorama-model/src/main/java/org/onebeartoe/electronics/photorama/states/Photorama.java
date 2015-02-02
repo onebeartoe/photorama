@@ -1,6 +1,8 @@
 
 package org.onebeartoe.electronics.photorama.states;
 
+import org.onebeartoe.electronics.photorama.Camera;
+
 /**
  * @author Roberto Marquez
  */
@@ -8,8 +10,16 @@ public class Photorama
 {
     private PhotoramaState rootState;
 
-    public Photorama()
+    private Camera camera;
+
+    public void setCamera(Camera camera)
     {
+        this.camera = camera;
+    }
+    
+    public Photorama(Camera camera)
+    {
+        this.camera = camera;
         populateStates();
     }
     
@@ -19,13 +29,23 @@ public class Photorama
     }
     
     private void populateStates()
-    {        
-        PhotoramaState rightState = new PhotoramaRaspberryPiState();
+    {
+        PhotoramaState photoramaRaspberryPiState = new PhotoramaRaspberryPiState();
+        
+        PhotoramaState raspberryPiOffState = new RaspberryPiShutdownState();
+        
+        PhotoramaState raspberryPiOnState = new RaspberryPiOnState();
+        
+        raspberryPiOnState.setRightButton(raspberryPiOffState);
+        raspberryPiOnState.setUpButton(photoramaRaspberryPiState);
+        
+        raspberryPiOffState.setLeftButton(raspberryPiOnState);
         
         rootState = new PhotoramaModeState();
-        rootState.setRightButton(rightState);
+        rootState.setRightButton(photoramaRaspberryPiState);
+        rootState.setCamera(camera);
         
-        rightState.setLeftButton(rootState);
-       
+        photoramaRaspberryPiState.setLeftButton(rootState);
+        photoramaRaspberryPiState.setSelectButton(raspberryPiOnState);
     }
 }

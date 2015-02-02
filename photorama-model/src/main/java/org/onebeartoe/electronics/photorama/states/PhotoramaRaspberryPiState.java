@@ -1,10 +1,14 @@
 package org.onebeartoe.electronics.photorama.states;
 
+import org.onebeartoe.electronics.photorama.Camera;
+
 /**
  * @author Roberto Marquez
  */
 public class PhotoramaRaspberryPiState extends PhotoramaStates
 {    
+   
+    
     @Override
     public String getValue()
     {
@@ -14,8 +18,18 @@ public class PhotoramaRaspberryPiState extends PhotoramaStates
     @Override
     public PhotoramaState leftButton()
     {
-        System.out.println("moving to " + leftState.getClass().getSimpleName());
+        printMovingTo(leftState);
         
         return leftState;
+    }
+    
+    @Override
+    public PhotoramaState selectButton()
+    {
+        printMovingTo(selectState);
+        
+        
+        
+        return selectState;
     }
 }

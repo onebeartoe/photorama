@@ -1,6 +1,8 @@
 
 package org.onebeartoe.electronics.photorama.states;
 
+import org.onebeartoe.electronics.photorama.Camera;
+
 /**
  * @author Roberto Marquez
  */
@@ -12,6 +14,8 @@ public class RootState implements PhotoramaState
     protected PhotoramaState rightState;
     protected PhotoramaState selectState;
     
+    static protected Camera camera;
+
     public String getLabel()
     {
         return getClass().getName();
@@ -24,37 +28,56 @@ public class RootState implements PhotoramaState
 
     public PhotoramaState leftButton()
     {
-        System.out.println(getClass().getName() + " does nothing for LEFT button pushes.");
+        String className = getClass().getSimpleName();
+        
+        System.out.println(className + " does nothing for LEFT button pushes.");
         
         return this;
+    }
+    
+    protected void printMovingTo(PhotoramaState state)
+    {
+        String stateName = state.getClass().getSimpleName();
+        
+        System.out.println("Moving to " + stateName);
     }
 
     public PhotoramaState rightButton()
     {
-        System.out.println(getClass().getName() + " does nothing for RIGHT button pushes.");
+        String className = getClass().getSimpleName();
+        System.out.println(className + " does nothing for RIGHT button pushes.");
         
         return this;
     }
 
     public PhotoramaState upButton()
     {
-        System.out.println(getClass().getName() + " does nothing for UP button pushes.");
+        String className = getClass().getSimpleName();
+        System.out.println(className + " does nothing for UP button pushes.");
         
         return this;
     }
 
     public PhotoramaState downButton()
     {
-        System.out.println(getClass().getName() + " does nothing for DOWN button pushes.");
+        String className = getClass().getSimpleName();
+        System.out.println(className + " does nothing for DOWN button pushes.");
         
         return this;
     }
 
     public PhotoramaState selectButton()
     {
-        System.out.println(getClass().getName() + " does nothing for SELECT button pushes.");
+        String className = getClass().getSimpleName();
+        System.out.println(className + " does nothing for SELECT button pushes.");
         
         return this;
+    }
+    
+    @Override
+    public void setCamera(Camera camera)
+    {
+        this.camera = camera;
     }
 
     @Override

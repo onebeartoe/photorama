@@ -1,12 +1,16 @@
 
 package org.onebeartoe.electronics.photorama.states;
 
+import org.onebeartoe.electronics.photorama.Camera;
+
 /**
  * This interface is used to move between the various screen in Photorama.
  * @author Roberto Marquez
  */
 public interface PhotoramaState
 {
+    public void setCamera(Camera camera);
+    
     public String getLabel();
     public String getValue();
     

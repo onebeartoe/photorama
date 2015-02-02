@@ -6,19 +6,20 @@ import org.onebeartoe.electronics.photorama.Camera;
 /**
  * @author Roberto Marquez
  */
-public class PhotoramaModeState extends PhotoramaStates
+public class RaspberryPiOnState extends RaspberryPiStates
 {
-   
+ 
+    
     @Override
     public String getValue()
     {
-        return "\tMode\t->";
+        return "\tOn\t->";
     }
     
     @Override
     public PhotoramaState rightButton()
     {
-        System.out.println("moving to " + rightState.getClass().getSimpleName());
+        printMovingTo(rightState);
         
         return rightState;
     }
