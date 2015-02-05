@@ -22,4 +22,12 @@ public class PhotoramaModeState extends PhotoramaStates
         
         return rightState;
     }
+    
+    public PhotoramaState upButton()
+    {
+        String className = getClass().getSimpleName();
+        System.out.println(className + " does nothing for UP button pushes.");
+        
+        return this;
+    }
 }

@@ -20,10 +20,10 @@
          <center>
             <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <left>
-                    <Button fx:id="button" onAction="#handleLeftButtonAction" text="Left" BorderPane.alignment="CENTER" />
+                    <Button fx:id="button" onAction="#onLeftButtonAction" text="Left" BorderPane.alignment="CENTER" />
                </left>
                <bottom>
-                  <Button mnemonicParsing="false" text="Down" BorderPane.alignment="CENTER" />
+                  <Button mnemonicParsing="false" onAction="#onDownButtonAction" text="Down" BorderPane.alignment="CENTER" />
                </bottom>
                <right>
                   <Button mnemonicParsing="false" onAction="#onRightButtonAction" text="Right" BorderPane.alignment="CENTER" />
@@ -32,7 +32,7 @@
                   <Button mnemonicParsing="false" onAction="#onSelectButttonAction" text="Select" BorderPane.alignment="CENTER" />
                </center>
                <top>
-                  <Button mnemonicParsing="false" text="Up" BorderPane.alignment="CENTER" />
+                  <Button mnemonicParsing="false" onAction="#onUpButtonAction" text="Up" BorderPane.alignment="CENTER" />
                </top>
             </BorderPane>
          </center>

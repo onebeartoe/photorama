@@ -4,11 +4,11 @@ package org.onebeartoe.electronics.photorama.states;
 /**
  * @author Roberto Marquez
  */
-public class RaspberryPiStates extends RootState
+public class ModeFootPedalState extends ModeStates
 {
     @Override
-    public String getLabel()
+    public String getValue()
     {
-        return "Raspberry Pi";
+        return "\tFoot Pedal\t->";
     }
 }

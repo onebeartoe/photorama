@@ -33,7 +33,7 @@ public class FXMLController implements Initializable
     private Label stateLabel;
     
     @FXML
-    private void handleLeftButtonAction(ActionEvent event) 
+    private void onLeftButtonAction(ActionEvent event) 
     {
         printButtonAction(event);
         
@@ -45,6 +45,16 @@ public class FXMLController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
+        updateLabels();
+    }
+
+    @FXML
+    private void onDownButtonAction(ActionEvent event)
+    {
+        printButtonAction(event);
+        
+        currentState = currentState.downButton();
+        
         updateLabels();
     }
     
@@ -64,6 +74,16 @@ public class FXMLController implements Initializable
         printButtonAction(event);
         
         currentState = currentState.selectButton();
+        
+        updateLabels();
+    }
+    
+    @FXML
+    private void onUpButtonAction(ActionEvent event)
+    {
+        printButtonAction(event);
+        
+        currentState = currentState.upButton();
         
         updateLabels();
     }

@@ -50,13 +50,20 @@ public class RootState implements PhotoramaState
         return this;
     }
 
+    @Override
     public PhotoramaState upButton()
     {
-        String className = getClass().getSimpleName();
-        System.out.println(className + " does nothing for UP button pushes.");
+        printMovingTo(upState);
         
-        return this;
+        return upState;
     }
+//    public PhotoramaState upButton()
+//    {
+//        String className = getClass().getSimpleName();
+//        System.out.println(className + " does nothing for UP button pushes.");
+//        
+//        return this;
+//    }
 
     public PhotoramaState downButton()
     {
@@ -66,13 +73,20 @@ public class RootState implements PhotoramaState
         return this;
     }
 
+    @Override
     public PhotoramaState selectButton()
     {
-        String className = getClass().getSimpleName();
-        System.out.println(className + " does nothing for SELECT button pushes.");
-        
-        return this;
-    }
+        printMovingTo(selectState);
+
+        return selectState;
+    }    
+//    public PhotoramaState selectButton()
+//    {
+//        String className = getClass().getSimpleName();
+//        System.out.println(className + " does nothing for SELECT button pushes.");
+//        
+//        return this;
+//    }
     
     @Override
     public void setCamera(Camera camera)

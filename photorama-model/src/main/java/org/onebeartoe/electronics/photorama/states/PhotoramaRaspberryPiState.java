@@ -1,7 +1,5 @@
 package org.onebeartoe.electronics.photorama.states;
 
-import org.onebeartoe.electronics.photorama.Camera;
-
 /**
  * @author Roberto Marquez
  */
@@ -23,13 +21,11 @@ public class PhotoramaRaspberryPiState extends PhotoramaStates
         return leftState;
     }
     
-    @Override
-    public PhotoramaState selectButton()
-    {
-        printMovingTo(selectState);
-        
-        
-        
-        return selectState;
-    }
+//    @Override
+//    public PhotoramaState selectButton()
+//    {
+//        printMovingTo(selectState);
+//
+//        return selectState;
+//    }
 }
