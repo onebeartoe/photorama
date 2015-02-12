@@ -14,16 +14,19 @@ public class RootState implements PhotoramaState
     protected PhotoramaState rightState;
     protected PhotoramaState selectState;
     
+    protected String label = "no label";
+    protected String value = "no value";
+    
     static protected Camera camera;
 
     public String getLabel()
     {
-        return getClass().getName();
+        return label;
     }
 
     public String getValue()
     {
-        return "nothing";
+        return value;
     }
 
     public PhotoramaState leftButton()

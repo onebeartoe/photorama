@@ -1,5 +1,7 @@
 
-package org.onebeartoe.electronics.photorama.states;
+package org.onebeartoe.electronics.photorama.states.mode;
+
+import org.onebeartoe.electronics.photorama.states.RootState;
 
 /**
  * @author Roberto Marquez

@@ -10,7 +10,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import org.onebeartoe.electronics.photorama.Camera;
-import org.onebeartoe.electronics.photorama.RaspberryPiCamera;
 import org.onebeartoe.electronics.photorama.mock.MockCamera;
 import org.onebeartoe.electronics.photorama.states.Photorama;
 import org.onebeartoe.electronics.photorama.states.PhotoramaState;
@@ -39,13 +38,13 @@ public class FXMLController implements Initializable
         
         currentState = currentState.leftButton();
         
-        updateLabels();
+        updateUiLabels();
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-        updateLabels();
+        updateUiLabels();
     }
 
     @FXML
@@ -55,7 +54,7 @@ public class FXMLController implements Initializable
         
         currentState = currentState.downButton();
         
-        updateLabels();
+        updateUiLabels();
     }
     
     @FXML
@@ -65,7 +64,7 @@ public class FXMLController implements Initializable
         
         currentState = currentState.rightButton();
         
-        updateLabels();
+        updateUiLabels();
     }
     
     @FXML
@@ -75,7 +74,7 @@ public class FXMLController implements Initializable
         
         currentState = currentState.selectButton();
         
-        updateLabels();
+        updateUiLabels();
     }
     
     @FXML
@@ -85,7 +84,7 @@ public class FXMLController implements Initializable
         
         currentState = currentState.upButton();
         
-        updateLabels();
+        updateUiLabels();
     }
     
     private void printButtonAction(ActionEvent event)
@@ -97,7 +96,7 @@ public class FXMLController implements Initializable
         System.out.println(text + " was clicked.");
     }
     
-    private void updateLabels()
+    private void updateUiLabels()
     {
         String text = currentState.getLabel();
         stateLabel.setText(text);

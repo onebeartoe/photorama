@@ -1,12 +1,15 @@
+
 package org.onebeartoe.electronics.photorama.raspberry.pi;
 
-//import com.oracle.raspberry.pi.lcd.AdafruitLcdPlate;
-//import com.oracle.raspberry.pi.lcd.Lcd;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import org.onebeartoe.electronics.photorama.Camera;
 import org.onebeartoe.electronics.photorama.RaspberryPiCamera;
+import org.onebeartoe.electronics.photorama.mock.MockCamera;
+import org.onebeartoe.electronics.photorama.states.Photorama;
+import org.onebeartoe.electronics.photorama.states.PhotoramaState;
 import se.hirt.pi.adafruitlcd.Button;
 import static se.hirt.pi.adafruitlcd.Button.DOWN;
 import static se.hirt.pi.adafruitlcd.Button.RIGHT;
@@ -28,10 +31,14 @@ import se.hirt.pi.adafruitlcd.impl.RealLCD;
 import se.hirt.pi.adafruitlcd.impl.RealLCD.Direction;
 
 /**
+ * For the demo from the Hirt API, see the main() method in 
+ * the se.hirt.pi.adafruitlcd.demo.Demo class.
+ * 
  * @author Roberto Marquez
  */
 public class LcdKeypadPhotoramaApp
 {
+    private PhotoramaState currentState;
 
     static final int BUS_NO = 1;  // 0 for Raspberry Pi B version 1 and 1 for version 2
     static final int BUS_ADDRESS = 0x20;
@@ -41,16 +48,7 @@ public class LcdKeypadPhotoramaApp
     private Camera camera;
 
     private ILCD lcd;
-
-    private static int currentTest = -1;
-
-    private final static LCDTest[] TESTS =
-    {
-        new HelloWorldTest(),
-        new ScrollTest(), new CursorDemo(), new DisplayDemo(),
-        new ColorDemo(), new AutoScrollDemo(), new ExitTest()
-    };
-
+    
     public LcdKeypadPhotoramaApp()
     {
         logger = Logger.getLogger(LcdKeypadPhotoramaApp.class.getName());
@@ -58,6 +56,8 @@ public class LcdKeypadPhotoramaApp
         try
         {
             camera = new RaspberryPiCamera();
+            Photorama photorama = new Photorama(camera);
+            currentState = photorama.getRootState();
 
             lcd = new RealLCD();
             lcd.setBacklight(Color.ON);
@@ -75,11 +75,19 @@ public class LcdKeypadPhotoramaApp
                         switch (button)
                         {
                             case UP:
+                            {
+                                printButtonEvent(button);
+        
+                                currentState = currentState.leftButton();
+
+                                updateLcd();
+                                
                                 currentTest = --currentTest < 0 ? 0 : currentTest;
                                 lcd.clear();
                                 lcd.setText(String.format("#%d:%s\nPress Sel to run!",
                                         currentTest, TESTS[currentTest].getName()));
                                 break;
+                            }
                             case DOWN:
                                 currentTest = ++currentTest > (TESTS.length - 1) ? TESTS.length - 1
                                         : currentTest;
@@ -151,4 +159,21 @@ public class LcdKeypadPhotoramaApp
             Thread.sleep(500);
         }
     }
+    
+    private void printButtonEvent(Button button)
+    {
+        String text = button  + " was clicked.";
+        
+        System.out.println(text);
+    }
+    
+    private void updateLcd()
+    {
+        String text = currentState.getLabel();
+        lcd.setText(, text);
+        stateLabel.setText(text);
+        
+        text = currentState.getValue();
+        stateValueLabel.setText(text);
+    }    
 }
