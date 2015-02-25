@@ -18,6 +18,7 @@
         <module>photorama-raspberry-pi-lcd-keypad</module>
         <module>photorama-state-buider-maven</module>
         <module>photorama-viewer-webapp</module>
+        <module>photorama-raspberry-pi-webapp</module>
     </modules>
 
     <properties>

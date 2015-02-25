@@ -2,6 +2,9 @@
 package org.onebeartoe.electronics.photorama;
 
 /**
+ * A call to the  setCameraOutputPath() method is needed after the object is 
+ * instantiated.
+ * 
  * @author Roberto Marquez
  */
 public abstract class Camera 
