@@ -11,7 +11,7 @@ public class ModeFootPedalState extends ModeStates
     @Override
     public String getValue()
     {
-        return "\tFoot Pedal\t->";
+        return "Foot Pedal ->";
     }
     
     @Override

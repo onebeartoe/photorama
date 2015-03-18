@@ -11,7 +11,7 @@ public class FootPedalOffState extends FootPedalStates
     @Override
     public String getValue()
     {
-        return "<-\tOff\t";
+        return "<- Off";
     }
     
     @Override

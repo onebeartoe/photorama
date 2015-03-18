@@ -8,7 +8,7 @@ import org.onebeartoe.electronics.photorama.states.PhotoramaState;
  */
 public class RaspberryPiConfirmShutdownState extends RaspberryPiStates
 {
-    private String value = "\tConfirm Shutdown?\t";
+    private String value = "Confirm Shutdown?";
     
     @Override
     public String getValue()
@@ -19,7 +19,7 @@ public class RaspberryPiConfirmShutdownState extends RaspberryPiStates
     @Override
     public PhotoramaState selectButton()
     {
-        value = "\tShutting Down\t";
+        value = "Shutting Down";
 
         System.out.println( value.trim() );
 

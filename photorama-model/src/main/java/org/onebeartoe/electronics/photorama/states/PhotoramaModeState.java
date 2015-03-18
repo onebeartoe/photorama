@@ -12,7 +12,7 @@ public class PhotoramaModeState extends PhotoramaStates
     @Override
     public String getValue()
     {
-        return "\tMode\t->";
+        return "Mode ->";
     }
     
     @Override

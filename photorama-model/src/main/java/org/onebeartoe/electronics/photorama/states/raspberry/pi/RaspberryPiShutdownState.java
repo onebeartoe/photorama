@@ -11,7 +11,7 @@ public class RaspberryPiShutdownState extends RaspberryPiStates
     @Override
     public String getValue()
     {
-        return "<-\tShutdown\t";
+        return "<- Shutdown";
     }
     
     @Override

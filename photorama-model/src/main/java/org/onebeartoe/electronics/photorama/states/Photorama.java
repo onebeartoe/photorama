@@ -10,6 +10,10 @@ import org.onebeartoe.electronics.photorama.states.foot.pedal.FootPedalOffState;
 import org.onebeartoe.electronics.photorama.states.foot.pedal.FootPedalOnState;
 import org.onebeartoe.electronics.photorama.states.foot.pedal.FootPedalSnapshotState;
 import org.onebeartoe.electronics.photorama.states.mode.ModeTimeLapseState;
+import org.onebeartoe.electronics.photorama.states.time.lapse.MinutesState;
+import org.onebeartoe.electronics.photorama.states.time.lapse.TimeLapseHoursState;
+import org.onebeartoe.electronics.photorama.states.time.lapse.TimeLapseMinutesState;
+import org.onebeartoe.electronics.photorama.states.time.lapse.TimeLapseSecondsState;
 
 /**
  * @author Roberto Marquez
@@ -76,10 +80,27 @@ public class Photorama
         footPedalOnState.setUpButton(modeFootPedalState);
         footPedalOnState.setSelectButton(footPedalSnapshotState);
         footPedalOnState.setRightButton(footPedalOffState);
+
+        MinutesState minutesState = new MinutesState();
+
+        PhotoramaState timeLapseSecondsState = new TimeLapseSecondsState();
+        PhotoramaState timeLapseHoursState = new TimeLapseHoursState();
         
+        PhotoramaState timeLapseMinutesState = new TimeLapseMinutesState();
+        timeLapseMinutesState.setLeftButton(timeLapseSecondsState);
+        timeLapseMinutesState.setRightButton(timeLapseHoursState);
+        timeLapseMinutesState.setSelectButton(minutesState);
+        
+        timeLapseSecondsState.setRightButton(timeLapseMinutesState);
+        timeLapseHoursState.setLeftButton(timeLapseMinutesState);
+        minutesState.setUpButton(timeLapseMinutesState);
+                
         PhotoramaState modeTimeLapseState = new ModeTimeLapseState();
         modeTimeLapseState.setUpButton(photoramaModeState);
         modeTimeLapseState.setLeftButton(modeFootPedalState);
+        modeTimeLapseState.setSelectButton(timeLapseMinutesState);
+        
+        timeLapseMinutesState.setUpButton(modeTimeLapseState);
         
         modeFootPedalState.setUpButton(photoramaModeState);
         modeFootPedalState.setSelectButton(footPedalOffState);

@@ -1,16 +1,16 @@
 
-package org.onebeartoe.electronics.photorama.states.mode;
+package org.onebeartoe.electronics.photorama.states.time.lapse;
 
 import org.onebeartoe.electronics.photorama.states.RootState;
 
 /**
  * @author Roberto Marquez
  */
-public class ModeStates extends RootState
+public class TimeLapseStates extends RootState
 {
     @Override
     public String getLabel()
     {
-        return "Mode";
+        return "Time Lapse";
     }
 }

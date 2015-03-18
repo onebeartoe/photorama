@@ -11,7 +11,7 @@ public class RaspberryPiOnState extends RaspberryPiStates
     @Override
     public String getValue()
     {
-        return "\tOn\t->";
+        return "On ->";
     }
     
     @Override

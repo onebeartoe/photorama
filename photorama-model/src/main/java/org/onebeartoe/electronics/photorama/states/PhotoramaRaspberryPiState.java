@@ -10,7 +10,7 @@ public class PhotoramaRaspberryPiState extends PhotoramaStates
     @Override
     public String getValue()
     {
-        return "<-\tRaspberry Pi\t";
+        return "<- Raspberry Pi";
     }
     
     @Override

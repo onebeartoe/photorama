@@ -61,7 +61,10 @@ public class LcdKeypadPhotoramaApp
             lcd = new RealLCD();
             lcd.setBacklight(Color.ON);
 
-            lcd.setText("LCD Test!\nPress up/down...");
+            // set the start-up label
+            updateLcd();
+//            currentState.upButton();
+//            lcd.setText("LCD Test!\nPress up/down...");
 
             ButtonPressedObserver observer = new ButtonPressedObserver(lcd);
             observer.addButtonListener(new ButtonListener()
@@ -127,8 +130,8 @@ public class LcdKeypadPhotoramaApp
                             }
                             default:
                             {
-                                String b = button.toString();
-                                String text = String.format("Button %s is not in use...", b);
+                                String label = button.toString();
+                                String text = String.format("Button %s is not in use...", label);
                                 lcd.setText(text);
                             }
                         }

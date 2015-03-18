@@ -60,13 +60,6 @@ public class RootState implements PhotoramaState
         
         return upState;
     }
-//    public PhotoramaState upButton()
-//    {
-//        String className = getClass().getSimpleName();
-//        System.out.println(className + " does nothing for UP button pushes.");
-//        
-//        return this;
-//    }
 
     public PhotoramaState downButton()
     {
