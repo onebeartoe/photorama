@@ -1,6 +1,7 @@
 
 package org.onebeartoe.electronics.photorama.raspberry.pi;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -48,6 +49,9 @@ public class LcdKeypadPhotoramaApp
 
             String outpath = userHome + "/" + "onebeartoe/photorama/";
                     
+            File outDirectory = new File(outpath);
+            outDirectory.mkdirs();
+            
             camera = new RaspberryPiCamera();
             camera.setOutputPath(outpath);
             
