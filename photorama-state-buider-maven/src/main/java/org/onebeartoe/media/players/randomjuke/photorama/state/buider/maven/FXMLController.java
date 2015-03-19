@@ -11,7 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import org.onebeartoe.electronics.photorama.Camera;
 import org.onebeartoe.electronics.photorama.mock.MockCamera;
-import org.onebeartoe.electronics.photorama.states.Photorama;
+import org.onebeartoe.electronics.photorama.Photorama;
 import org.onebeartoe.electronics.photorama.states.PhotoramaState;
 
 public class FXMLController implements Initializable 

@@ -7,7 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.onebeartoe.electronics.photorama.Camera;
 import org.onebeartoe.electronics.photorama.RaspberryPiCamera;
-import org.onebeartoe.electronics.photorama.states.Photorama;
+import org.onebeartoe.electronics.photorama.Photorama;
 import org.onebeartoe.electronics.photorama.states.PhotoramaState;
 import se.hirt.pi.adafruitlcd.Button;
 import static se.hirt.pi.adafruitlcd.Button.DOWN;

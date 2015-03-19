@@ -1,11 +1,13 @@
 
-package org.onebeartoe.electronics.photorama.states;
+package org.onebeartoe.electronics.photorama;
 
 import org.onebeartoe.electronics.photorama.states.mode.ModeFootPedalState;
 import org.onebeartoe.electronics.photorama.states.raspberry.pi.RaspberryPiShutdownState;
 import org.onebeartoe.electronics.photorama.states.raspberry.pi.RaspberryPiOnState;
 import org.onebeartoe.electronics.photorama.states.raspberry.pi.RaspberryPiConfirmShutdownState;
-import org.onebeartoe.electronics.photorama.Camera;
+import org.onebeartoe.electronics.photorama.states.PhotoramaModeState;
+import org.onebeartoe.electronics.photorama.states.PhotoramaRaspberryPiState;
+import org.onebeartoe.electronics.photorama.states.PhotoramaState;
 import org.onebeartoe.electronics.photorama.states.foot.pedal.FootPedalOffState;
 import org.onebeartoe.electronics.photorama.states.foot.pedal.FootPedalOnState;
 import org.onebeartoe.electronics.photorama.states.foot.pedal.FootPedalSnapshotState;
