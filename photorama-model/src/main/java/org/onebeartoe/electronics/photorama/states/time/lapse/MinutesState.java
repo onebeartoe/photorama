@@ -9,6 +9,8 @@ import org.onebeartoe.electronics.photorama.states.RootState;
  */
 public class MinutesState extends RootState
 {
+    protected int delta = 1;
+    
     public MinutesState()
     {
         value = "5";
@@ -24,7 +26,8 @@ public class MinutesState extends RootState
     public PhotoramaState leftButton()
     {
         Integer i = Integer.valueOf(value);
-        i--;
+
+        i -= delta;
         
         value = String.valueOf(i);
         
@@ -38,7 +41,7 @@ public class MinutesState extends RootState
     public PhotoramaState rightButton()
     {
         Integer i = Integer.valueOf(value);
-        i++;
+        i += delta;
         
         value = String.valueOf(i);
         

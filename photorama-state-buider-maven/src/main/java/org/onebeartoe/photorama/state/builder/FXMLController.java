@@ -1,6 +1,5 @@
 
-//TODO: rename this package to org.onebeartoe.photorama.state.builder
-package org.onebeartoe.media.players.randomjuke.photorama.state.buider.maven;
+package org.onebeartoe.photorama.state.builder;
 
 import java.net.URL;
 import java.util.ResourceBundle;

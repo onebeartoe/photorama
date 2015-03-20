@@ -19,7 +19,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <mainClass>org.onebeartoe.media.players.randomjuke.photorama.state.buider.maven.MainApp</mainClass>
+        <mainClass>org.onebeartoe.photorama.state.builder.MainApp</mainClass>
     </properties>
 
     <organization>

@@ -1,5 +1,5 @@
 
-package org.onebeartoe.media.players.randomjuke.photorama.state.buider.maven;
+package org.onebeartoe.photorama.state.builder;
 
 import javafx.application.Application;
 import static javafx.application.Application.launch;

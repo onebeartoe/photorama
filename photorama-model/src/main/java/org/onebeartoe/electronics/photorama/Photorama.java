@@ -12,7 +12,9 @@ import org.onebeartoe.electronics.photorama.states.foot.pedal.FootPedalOffState;
 import org.onebeartoe.electronics.photorama.states.foot.pedal.FootPedalOnState;
 import org.onebeartoe.electronics.photorama.states.foot.pedal.FootPedalSnapshotState;
 import org.onebeartoe.electronics.photorama.states.mode.ModeTimeLapseState;
+import org.onebeartoe.electronics.photorama.states.time.lapse.HoursState;
 import org.onebeartoe.electronics.photorama.states.time.lapse.MinutesState;
+import org.onebeartoe.electronics.photorama.states.time.lapse.SecondsState;
 import org.onebeartoe.electronics.photorama.states.time.lapse.TimeLapseHoursState;
 import org.onebeartoe.electronics.photorama.states.time.lapse.TimeLapseMinutesState;
 import org.onebeartoe.electronics.photorama.states.time.lapse.TimeLapseSecondsState;
@@ -83,11 +85,22 @@ public class Photorama
         footPedalOnState.setSelectButton(footPedalSnapshotState);
         footPedalOnState.setRightButton(footPedalOffState);
 
-        MinutesState minutesState = new MinutesState();
+        PhotoramaState secondsState = new SecondsState();
 
         PhotoramaState timeLapseSecondsState = new TimeLapseSecondsState();
-        PhotoramaState timeLapseHoursState = new TimeLapseHoursState();
+        timeLapseSecondsState.setSelectButton(secondsState);
         
+        secondsState.setUpButton(timeLapseSecondsState);
+        
+        PhotoramaState hoursState = new HoursState();
+        
+        PhotoramaState timeLapseHoursState = new TimeLapseHoursState();
+        timeLapseHoursState.setSelectButton(hoursState);
+        
+        hoursState.setUpButton(timeLapseHoursState);
+        
+        MinutesState minutesState = new MinutesState();
+                
         PhotoramaState timeLapseMinutesState = new TimeLapseMinutesState();
         timeLapseMinutesState.setLeftButton(timeLapseSecondsState);
         timeLapseMinutesState.setRightButton(timeLapseHoursState);
