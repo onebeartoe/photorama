@@ -100,7 +100,8 @@ public class Photorama
         hoursState.setUpButton(timeLapseHoursState);
         
         MinutesState minutesState = new MinutesState();
-                
+        minutesState.setCamera(camera);
+
         PhotoramaState timeLapseMinutesState = new TimeLapseMinutesState();
         timeLapseMinutesState.setLeftButton(timeLapseSecondsState);
         timeLapseMinutesState.setRightButton(timeLapseHoursState);

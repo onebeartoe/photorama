@@ -16,12 +16,8 @@ import org.onebeartoe.system.Filesystem;
 public class RaspberryPiCamera extends Camera
 {    
     private Timer timer;
-    
-    private TimeLapseConfiguration configuration;
-    
+
     private Logger logger;
-    
-    private boolean timeLapseOn;
     
     public RaspberryPiCamera()
     {
@@ -90,18 +86,6 @@ public class RaspberryPiCamera extends Camera
         
         setOutputPath(outpath);
     }
-    
-    @Override
-    public void setTimelapse(long delay, FrequencyUnits unit)
-    {
-        configuration.delay = delay;
-        configuration.unit = unit;
-        
-        if(timeLapseOn)
-        {
-            startTimelapse();
-        }
-    }
 
     @Override
     public void startTimelapse() 
@@ -143,6 +127,8 @@ public class RaspberryPiCamera extends Camera
         Date now = new Date();
         snapshotTimer.schedule(captureTask, now);
     }
+
+
     
     private class CaptureTask extends TimerTask
     {

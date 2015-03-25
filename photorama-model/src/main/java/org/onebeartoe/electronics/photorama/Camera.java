@@ -13,6 +13,10 @@ public abstract class Camera
     
     protected String outputPath;
     
+    protected TimeLapseConfiguration configuration;
+    
+    protected boolean timeLapseOn;
+    
     public PhotoramaModes getMode()
     {
         return mode;
@@ -24,6 +28,11 @@ public abstract class Camera
     }
     
     public abstract long getTimelapse();
+    
+    public FrequencyUnits getTimelapseUnit()
+    {
+        return configuration.unit;
+    }
             
     public void setMode(PhotoramaModes mode)
     {
@@ -40,8 +49,17 @@ public abstract class Camera
     {
         outputPath = path;
     }
-    
-    public abstract void setTimelapse(long delay, FrequencyUnits unit);    
+
+    public void setTimelapse(long delay, FrequencyUnits unit)
+    {
+        configuration.delay = delay;
+        configuration.unit = unit;
+        
+        if(timeLapseOn)
+        {
+            startTimelapse();
+        }
+    }
     
     public abstract void startTimelapse();
     

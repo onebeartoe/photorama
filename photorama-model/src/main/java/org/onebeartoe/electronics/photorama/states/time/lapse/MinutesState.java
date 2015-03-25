@@ -13,13 +13,8 @@ public class MinutesState extends RootState
     
     public MinutesState()
     {
+        label = "Minutes";
         value = "5";
-    }
-    
-    @Override
-    public String getLabel()
-    {
-        return "Minutes";
     }
     
     @Override
@@ -30,6 +25,8 @@ public class MinutesState extends RootState
         i -= delta;
         
         value = String.valueOf(i);
+        
+        TimeLapseStates.setTimelapse(camera, this);
         
         String className = getClass().getSimpleName();
         System.out.println(className + " decremented minute value.");
@@ -45,9 +42,21 @@ public class MinutesState extends RootState
         
         value = String.valueOf(i);
         
+        TimeLapseStates.setTimelapse(camera, this);
+        
         String className = getClass().getSimpleName();
         System.out.println(className + " incremented minute value.");
         
         return this;
+    }
+    
+    @Override
+    public PhotoramaState upButton()
+    {
+        PhotoramaState upState = super.upButton();
+        
+        camera.stopTimelapse();
+        
+        return upState;
     }
 }
