@@ -55,12 +55,10 @@ public class FrequencyServlet extends HttpServlet
         String result = "frequency ";
         try
         {
-            Long d = Long.valueOf(frequency);
-            long delay = d.longValue();
-//TODO: IS THIS REALLY SUPPOSED TO ALWAYS USE FrequencyUnits.SECONDS FOR
-//      THE UNITS?
-            unit = camera.getUnit
-            camera.setTimelapse(delay, FrequencyUnits.SECONDS);
+            Long delay = Long.valueOf(frequency);
+
+            FrequencyUnits unit = camera.getTimelapseUnit();
+            camera.setTimelapse(delay, unit);
             
             result += "updated to " + delay;
         }
