@@ -11,7 +11,7 @@ public class FootPedalSnapshotState extends FootPedalStates
 {
     public FootPedalSnapshotState()
     {
-        value = "Snapshot";
+        value = "[select]";
     }
     
     @Override

@@ -1,14 +1,14 @@
 
 package org.onebeartoe.electronics.photorama;
 
-import org.onebeartoe.electronics.photorama.states.mode.ModeFootPedalState;
+import org.onebeartoe.electronics.photorama.states.mode.ModeSnapshotState;
 import org.onebeartoe.electronics.photorama.states.raspberry.pi.RaspberryPiShutdownState;
 import org.onebeartoe.electronics.photorama.states.raspberry.pi.RaspberryPiOnState;
 import org.onebeartoe.electronics.photorama.states.raspberry.pi.RaspberryPiConfirmShutdownState;
 import org.onebeartoe.electronics.photorama.states.PhotoramaModeState;
 import org.onebeartoe.electronics.photorama.states.PhotoramaRaspberryPiState;
 import org.onebeartoe.electronics.photorama.states.PhotoramaState;
-import org.onebeartoe.electronics.photorama.states.foot.pedal.FootPedalOffState;
+import org.onebeartoe.electronics.photorama.states.foot.pedal.SnapshotOffState;
 import org.onebeartoe.electronics.photorama.states.foot.pedal.FootPedalOnState;
 import org.onebeartoe.electronics.photorama.states.foot.pedal.FootPedalSnapshotState;
 import org.onebeartoe.electronics.photorama.states.mode.ModeTimeLapseState;
@@ -46,7 +46,7 @@ public class Photorama
     
     private void populateStates()
     {
-        PhotoramaState modeFootPedalState = new ModeFootPedalState();
+        PhotoramaState modeFootPedalState = new ModeSnapshotState();
         
         PhotoramaState photoramaRaspberryPiState = new PhotoramaRaspberryPiState();
         
@@ -75,15 +75,16 @@ public class Photorama
         
         PhotoramaState footPedalOnState = new FootPedalOnState();
         
-        PhotoramaState footPedalOffState = new FootPedalOffState();
-        footPedalOffState.setLeftButton(footPedalOnState);
+        PhotoramaState snapshotOffState = new SnapshotOffState();
+        snapshotOffState.setLeftButton(footPedalOnState);
+        snapshotOffState.setUpButton(modeFootPedalState);
         
         PhotoramaState footPedalSnapshotState = new FootPedalSnapshotState();
         footPedalSnapshotState.setUpButton(footPedalOnState);
         
         footPedalOnState.setUpButton(modeFootPedalState);
         footPedalOnState.setSelectButton(footPedalSnapshotState);
-        footPedalOnState.setRightButton(footPedalOffState);
+        footPedalOnState.setRightButton(snapshotOffState);
 
         PhotoramaState secondsState = new SecondsState();
 
@@ -119,7 +120,7 @@ public class Photorama
         timeLapseMinutesState.setUpButton(modeTimeLapseState);
         
         modeFootPedalState.setUpButton(photoramaModeState);
-        modeFootPedalState.setSelectButton(footPedalOffState);
+        modeFootPedalState.setSelectButton(snapshotOffState);
         modeFootPedalState.setRightButton(modeTimeLapseState);
     }
 }

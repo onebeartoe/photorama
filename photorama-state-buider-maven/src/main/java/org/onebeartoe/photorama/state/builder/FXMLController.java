@@ -13,7 +13,7 @@ import org.onebeartoe.electronics.photorama.mock.MockCamera;
 import org.onebeartoe.electronics.photorama.Photorama;
 import org.onebeartoe.electronics.photorama.states.PhotoramaState;
 
-public class FXMLController implements Initializable 
+public class FXMLController implements Initializable
 {
     private PhotoramaState currentState;
     

@@ -6,7 +6,7 @@ import org.onebeartoe.electronics.photorama.states.PhotoramaState;
 /**
  * @author Roberto Marquez
  */
-public class FootPedalOffState extends FootPedalStates
+public class SnapshotOffState extends FootPedalStates
 {
     @Override
     public String getValue()
