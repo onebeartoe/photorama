@@ -7,7 +7,7 @@ import org.onebeartoe.electronics.photorama.states.PhotoramaState;
  * @author Roberto Marquez
  */
 //TODO: rename this calss to ModeSnapshotState
-public class ModeFootPedalState extends ModeStates
+public class ModeSnapshotState extends ModeStates
 {
     @Override
     public String getValue()
