@@ -16,6 +16,7 @@
                   httpsPort="9443"
                   host="*" />
 
-    <webApplication location="/home/pi/photorama/viewer-webapp"/>
+	<webApplication location="/home/pi/photorama-viewer-webapp/instances/current"
+                   contextRoot="make-san-antonio"/>
 
 </server>

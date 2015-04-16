@@ -25,6 +25,7 @@ public class RaspberryPiCamera extends Camera
                 
         configuration = new TimeLapseConfiguration();
         configuration.delay = 5000;
+        configuration.unit = FrequencyUnits.MINUTES;
         configuration.outputDirectory = new File(".");
     }
     
