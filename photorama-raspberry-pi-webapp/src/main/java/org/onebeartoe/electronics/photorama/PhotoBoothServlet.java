@@ -134,5 +134,5 @@ public class PhotoBoothServlet extends HttpServlet implements GpioPinListenerDig
         {
             System.out.println("Photo booth button pin state changed to HIGH.");
         }
-    }    
+    }
 }
