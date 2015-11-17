@@ -85,7 +85,16 @@ public class RaspberryPiCamera extends Camera
         // update the output path
         String outpath = getOutputPath();
         
-        setOutputPath(outpath);
+        try
+        {
+            setOutputPath(outpath);
+        }
+        catch (Exception ex)
+        {
+            String message = "an error occured while setting the output path: " + outpath;
+            
+            logger.log(Level.SEVERE, message, ex);
+        }
     }
 
     @Override
@@ -143,7 +152,7 @@ public class RaspberryPiCamera extends Camera
                 parentPath += "/";
             }
             
-            String filename = Filesystem.systimeToFilename();            
+            String filename = Filesystem.systimeToFilename();
             String outputPath = parentPath + filename;
             
             String command = "raspistill --quality 75 --output " + outputPath + ".jpg";
