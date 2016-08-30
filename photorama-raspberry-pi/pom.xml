@@ -9,9 +9,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>org.onebeartoe.electronics.raspberry.pi</groupId>  
-    <artifactId>photorama-raspberry-pi</artifactId>  
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>photorama-raspberry-pi</artifactId>
   
     <packaging>jar</packaging>
 
