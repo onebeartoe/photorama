@@ -85,9 +85,9 @@
         </dependency>
         
         <dependency>
-            <groupId>org.onebeartoe.electronics.raspberry.pi</groupId>  
+            <groupId>org.onebeartoe.electronics</groupId>
             <artifactId>photorama-raspberry-pi</artifactId>  
-            <version>1.0-SNAPSHOT</version>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>        
     </dependencies>
   
