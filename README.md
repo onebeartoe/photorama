@@ -7,6 +7,8 @@ Related Videos
 
 [![Photorama - LCD With Keypad Edition Demo](http://img.youtube.com/vi/eEEMGb77ULM/0.jpg)](https://www.youtube.com/watch?v=eEEMGb77ULM "Photorama - LCD With Keypad Edition Demo")
 
+[![Photorama - Episode I - Basic Usage](http://img.youtube.com/vi/ygNOiWzX5H0/0.jpg)](https://www.youtube.com/watch?v=ygNOiWzX5H0 "Photorama - Episode I - Basic Usage")
+
 [![onebeartoe Photorama - Episode II - Going Portable](http://img.youtube.com/vi/2GU2O4STKfA/0.jpg)](https://www.youtube.com/watch?v=2GU2O4STKfA "onebeartoe Photorama - Episode II - Going Portable")
 
 More from the author:
