@@ -12,7 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * 
  * @author Roberto Marquez
+ * 
+ * An instance of this servlet is created on startup to ensure a Camera object 
+ * is always an attribute in the ServletContext for the application.
+ * 
  */
 @WebServlet(urlPatterns = {"/configuration"}, loadOnStartup = 1)
 public class ConfigurationServlet extends HttpServlet
