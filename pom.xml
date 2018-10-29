@@ -10,16 +10,15 @@
 
     <packaging>pom</packaging>
 
-    <name>onebeartoe-photorama-parent</name>
+    <name>onebeartoe-photorama</name>
 
     <modules>
         <module>photorama-model</module>
         <module>photorama-raspberry-pi</module>
-<!--        
+        
         <module>photorama-raspberry-pi-lcd-keypad</module>
         <module>photorama-state-buider-maven</module>
---> 
-       
+ 
         <module>photorama-viewer-webapp</module>
         <module>photorama-raspberry-pi-webapp</module>
     </modules>
@@ -27,6 +26,19 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <repositories>
+        <repository>
+            <id>onebeartoe repo</id>
+            <name>onebeartoe Maven Repository</name>
+            <url>http://onebeartoe.org/maven/2/repository/</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+                <checksumPolicy>warn</checksumPolicy>
+            </releases>
+        </repository>
+    </repositories> 
 
     <build>
         <!-- To define the plugin version in your parent POM -->

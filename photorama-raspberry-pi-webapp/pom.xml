@@ -19,18 +19,6 @@
   
     <url>http://maven.apache.org</url>
   
-    <!--repositories>
-        <repository>
-            <id>oss-snapshots-repo</id>
-            <name>Sonatype OSS Maven Repository</name>
-            <url>https://oss.sonatype.org/content/groups/public</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </snapshots>
-        </repository>
-    </repositories-->
-  
     <dependencies>  
         <dependency>
             <groupId>com.pi4j</groupId>
@@ -63,19 +51,19 @@
         <dependency>
             <groupId>org.onebeartoe</groupId>  
             <artifactId>onebeartoe-application</artifactId>  
-            <version>1.0-SNAPSHOT</version>            
+            <version>1.0</version>            
         </dependency>
         
         <dependency>
             <groupId>org.onebeartoe</groupId>  
             <artifactId>onebeartoe-web</artifactId>  
-            <version>1.0-SNAPSHOT</version>            
+            <version>1.0</version>            
         </dependency>
         
         <dependency>
             <groupId>org.onebeartoe</groupId>  
             <artifactId>onebeartoe-system</artifactId>  
-            <version>1.0-SNAPSHOT</version>            
+            <version>1.0</version>            
         </dependency>
         
         <dependency>
