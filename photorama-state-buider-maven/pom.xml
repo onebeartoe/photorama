@@ -7,12 +7,11 @@
     <parent>
         <groupId>org.onebeartoe.electronics</groupId>
         <artifactId>photorama-parent</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>0.0.1</version>
     </parent>
 
-    <groupId>org.onebeartoe.media.players.randomjuke</groupId>
     <artifactId>photorama-state-buider-maven</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+
     <packaging>jar</packaging>
 
     <name>onebeartoe-photorama-state-buider</name>
@@ -31,7 +30,7 @@
         <dependency>
             <groupId>org.onebeartoe.electronics</groupId>
             <artifactId>photorama-raspberry-pi-lcd-keypad</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>0.0.1</version>
         </dependency>
     </dependencies>
 

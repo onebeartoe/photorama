@@ -6,11 +6,11 @@
 
     <groupId>org.onebeartoe.electronics</groupId>
     <artifactId>photorama-parent</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
 
     <packaging>pom</packaging>
 
-    <name>onebeartoe-photorama-parent</name>
+    <name>onebeartoe-photorama</name>
 
     <modules>
         <module>photorama-model</module>
@@ -20,6 +20,19 @@
         <module>photorama-viewer-webapp</module>
         <module>photorama-raspberry-pi-webapp</module>
     </modules>
+
+    <repositories>
+        <repository>
+            <id>onebeartoe-repo</id>
+            <name>onebeartoe Maven Repository</name>
+            <url>http://onebeartoe.org/maven/2/repository/</url>
+            <releases>
+              <enabled>true</enabled>
+              <updatePolicy>always</updatePolicy>
+              <checksumPolicy>warn</checksumPolicy>
+            </releases>
+        </repository>
+    </repositories>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

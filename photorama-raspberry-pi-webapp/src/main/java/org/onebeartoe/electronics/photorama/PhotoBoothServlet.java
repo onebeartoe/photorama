@@ -38,7 +38,7 @@ public class PhotoBoothServlet extends HttpServlet implements GpioPinListenerDig
     // On the Raspberry Pi model B, revision 2, this pin is labeled GPIO27
 //    public static final Pin buttonPin = RaspiPin.GPIO_02;
     
-    Logger logger;
+    private Logger logger;
   
 // didnt work in headless mode    
 //    private Robot robot;
