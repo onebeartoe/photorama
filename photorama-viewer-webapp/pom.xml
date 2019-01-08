@@ -16,7 +16,7 @@
     <name>onebeartoe-photorama-viewer-webapp</name>
   
     <url>http://maven.apache.org</url>
-  
+
     <dependencies>
         <dependency>
             <groupId>javax</groupId>

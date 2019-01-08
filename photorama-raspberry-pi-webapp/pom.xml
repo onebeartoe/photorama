@@ -67,6 +67,7 @@
         <dependency>
             <groupId>org.onebeartoe.electronics</groupId>  
             <artifactId>photorama-model</artifactId>  
+
             <version>0.0.1</version>
         </dependency>
         

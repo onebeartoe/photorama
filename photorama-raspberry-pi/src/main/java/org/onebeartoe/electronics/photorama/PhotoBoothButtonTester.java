@@ -16,7 +16,10 @@ import com.pi4j.io.gpio.event.GpioPinListenerDigital;
  */
 public class PhotoBoothButtonTester implements GpioPinListenerDigital
 {
-        // On the Raspberry Pi model B, revision 2, this pin is labeled GPIO27
+    /**
+     * This is pin 13 on the Raspberry Pi model B, revision 2 pin header.
+     * It is also labeld #21 by the Raspberry Pi foundation.
+     */ 
     public static final Pin buttonPin = RaspiPin.GPIO_02;
     
     public PhotoBoothButtonTester()

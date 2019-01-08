@@ -15,8 +15,10 @@
     <modules>
         <module>photorama-model</module>
         <module>photorama-raspberry-pi</module>
+        
         <module>photorama-raspberry-pi-lcd-keypad</module>
         <module>photorama-state-buider-maven</module>
+ 
         <module>photorama-viewer-webapp</module>
         <module>photorama-raspberry-pi-webapp</module>
     </modules>
@@ -37,7 +39,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
+    
     <build>
         <!-- To define the plugin version in your parent POM -->
         <pluginManagement>
@@ -87,5 +89,4 @@
             </plugin>
         </plugins>
     </reporting>
-
 </project>

@@ -1,6 +1,8 @@
 
 package org.onebeartoe.electronics.photorama;
 
+import java.io.File;
+
 /**
  * A call to the  setCameraOutputPath() method is needed after the object is 
  * instantiated.
@@ -45,8 +47,24 @@ public abstract class Camera
      * Make sure the path has a path separator character at the end.
      * @param path 
      */
-    public void setOutputPath(String path)
+    public void setOutputPath(String path) throws Exception
     {
+        File outdir = new File(path);
+        
+        if( ! outdir.exists() )
+        {
+            // the output directory does not exist,
+            // try creating it
+            boolean dirCreated = outdir.mkdirs();
+            
+            if( !dirCreated )
+            {
+                String message = "could not set output directory: " + path;
+                
+                throw new Exception(message);
+            }
+        }
+
         outputPath = path;
     }
 
