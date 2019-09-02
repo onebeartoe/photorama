@@ -1,34 +1,31 @@
 
 body
 {        
-//    background-color:  gray;
     font-family: Verdana, Arial, sans-serif;		
 }
 
 div.copyspace
 {
-//    border-color: wheat;
+
 }
 
 div.copyspace p
 {
-//    border-color: wheat;
+
 }
 
 div.featuredProject
 {
-//        background: lightgray;
-//        border-color: wheat;        
+
 }
 
 div.menu 
 {
-//    border-color:wheat;
+
 }
 
 div.menu a 
 {
-//    border-color: wheat;    
     color: black;    
     font-weight: bold;          
     text-decoration: none;
@@ -67,9 +64,7 @@ tr.even
 }
 
 .featuredProjectNavigation
-{
-//        background-color: lightgray;
-        
+{        
         border-color: black;
 }
 

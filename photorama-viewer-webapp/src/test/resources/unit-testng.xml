@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="photorama-webap-test-suite" parallel="none">
+    <test name="photorama-webapp-unit-tests">
+        
+<!--        <groups>
+            <run>
+                <include name="unit" />
+            </run>
+        </groups>-->
+
+        <packages>    
+            <package name="org.onebeartoe.photorama.viewer"/>
+            
+            <package name="org.onebeartoe.application.io.streams"/>
+        </packages>
+    </test>    
+</suite>
+
