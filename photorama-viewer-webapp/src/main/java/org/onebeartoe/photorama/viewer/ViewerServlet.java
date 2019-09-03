@@ -24,7 +24,7 @@ public class ViewerServlet extends HttpServlet
     
     private Logger logger;
     
-    private ViewerService viewerService;
+    private final ViewerService viewerService = new ViewerService();
         
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -49,8 +49,6 @@ public class ViewerServlet extends HttpServlet
         super.init();
         
         logger = Logger.getLogger(getClass().getName());
-
-        viewerService = new ViewerService();
         
         ServletContext servletContext = getServletContext();
         

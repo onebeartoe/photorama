@@ -2,7 +2,6 @@
 package org.onebeartoe.photorama.viewer;
 
 import java.io.File;
-import java.io.FileFilter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -135,7 +134,7 @@ public class ViewerService
         List<File> images = findFiles(FileType.IMAGE, directory);
         
         List<String> names;
-        if(images.size() == 0)
+        if(images.isEmpty())
         {
             File newestSubdir = findNewestSubdir(directory);
             images = findFiles(FileType.IMAGE, newestSubdir);
@@ -166,7 +165,8 @@ public class ViewerService
         for(String n : names)
         {
             // only show a limited amount of pictures if it is the main page, not for folder views
-            if(displayedNames.size() == imageMax && images.size() == 0)
+            if(displayedNames.size() == imageMax 
+                    && images != null && images.isEmpty())
             {
                 break;
             }
